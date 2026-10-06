@@ -14,4 +14,31 @@
     <dimen name="tamaño_margV_Carru">12dp</dimen>
     <dimen name="tamaño_margH_Carru">20dp</dimen>
     <dimen name="tamaño_carru">2dp</dimen>
+    <dimen name="margenH_text_carru">32dp</dimen>
+    <dimen name="margenT_text_carru">24dp</dimen>
+    <dimen name="tamaño_text_carru">24sp</dimen>
+
+
+    <!-- Diálogo de Inicio de Sesión -->
+    <dimen name="dialog_margen_horizontal">24dp</dimen>
+    <dimen name="dialog_radio_esquinas">24dp</dimen>
+    <dimen name="dialog_elevacion">10dp</dimen>
+    <dimen name="dialog_stroke_cero">0dp</dimen>
+    <dimen name="dialog_padding_horizontal">24dp</dimen>
+    <dimen name="dialog_padding_top">20dp</dimen>
+    <dimen name="dialog_padding_bottom">32dp</dimen>
+
+    <dimen name="dialog_icono_cerrar_tamano">32dp</dimen>
+    <dimen name="dialog_icono_cerrar_padding">4dp</dimen>
+
+    <dimen name="dialog_titulo_margen_top">12dp</dimen>
+    <dimen name="dialog_titulo_texto">22sp</dimen>
+
+    <dimen name="dialog_boton_alto">54dp</dimen>
+    <dimen name="dialog_boton_radio">27dp</dimen>
+    <dimen name="dialog_boton_texto">15sp</dimen>
+    <dimen name="dialog_boton_google_margen_top">28dp</dimen>
+    <dimen name="dialog_boton_espaciado_top">12dp</dimen>
+
+
 </resources>

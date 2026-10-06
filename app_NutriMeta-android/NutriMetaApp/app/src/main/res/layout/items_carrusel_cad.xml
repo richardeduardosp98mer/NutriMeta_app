@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/tamaño_margH_Carru"
     android:layout_marginVertical="@dimen/tamaño_margV_Carru"
-    app:cardBackgroundColor="@color/color_carru"
+    app:cardBackgroundColor="@color/colors"
     app:cardCornerRadius="@dimen/radio_boton"
     app:strokeColor="@color/color_boton"
     app:strokeWidth="@dimen/tamaño_carru">

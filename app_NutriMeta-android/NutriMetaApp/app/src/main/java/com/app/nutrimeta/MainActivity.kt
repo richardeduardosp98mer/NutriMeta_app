@@ -2,6 +2,7 @@ package com.app.nutrimeta
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
@@ -10,11 +11,28 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var indicators: List<View>
 
+    private val frases = listOf(
+        R.string.carrusel_frase_1,
+        R.string.carrusel_frase_2,
+        R.string.carrusel_frase_3
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val viewPager = findViewById<ViewPager2>(R.id.carrusel)
+
+        val textoCarrusel = findViewById<TextView>(R.id.textoCarrusel)
+        textoCarrusel.setText(frases[0])
+
+        //configuracion del boton iniciar sesion
+        val linkIniciarSesion = findViewById<TextView>(R.id.linkIniciarSesion)
+
+        linkIniciarSesion.setOnClickListener {
+            LoginDialogFragment().show(supportFragmentManager, "LoginDialog")
+        }
+        //////
 
         indicators = listOf(
             findViewById(R.id.indicador1),
@@ -49,6 +67,8 @@ class MainActivity : AppCompatActivity() {
                 super.onPageSelected(position)
                 updateIndicators(position)
                 adapter.playVideoAt(position)
+
+                textoCarrusel.setText(frases[position])
             }
         })
     }

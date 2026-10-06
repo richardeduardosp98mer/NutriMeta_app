@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dialog_margen_horizontal"
+    app:cardBackgroundColor="@color/fondo_dialogo"
+    app:cardCornerRadius="@dimen/dialog_radio_esquinas"
+    app:cardElevation="@dimen/dialog_elevacion"
+    app:strokeWidth="@dimen/dialog_stroke_cero">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dialog_padding_horizontal"
+        android:paddingTop="@dimen/dialog_padding_top"
+        android:paddingBottom="@dimen/dialog_padding_bottom">
+
+        <!-- Botón cerrar -->
+        <ImageView
+            android:id="@+id/btnCerrarDialog"
+            android:layout_width="@dimen/dialog_icono_cerrar_tamano"
+            android:layout_height="@dimen/dialog_icono_cerrar_tamano"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/desc_cerrar_dialogo"
+            android:focusable="true"
+            android:padding="@dimen/dialog_icono_cerrar_padding"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icono_cerrar_tint" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTituloLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dialog_titulo_margen_top"
+            android:text="@string/titulo_iniciar_sesion"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/dialog_titulo_texto"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCerrarDialog" />
+
+        <!-- Botón Continuar con Google -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_boton_alto"
+            android:layout_marginTop="@dimen/dialog_boton_google_margen_top"
+            android:text="@string/btn_continuar_google"
+            android:textAllCaps="false"
+            android:textColor="@color/colors"
+            android:textSize="@dimen/dialog_boton_texto"
+            android:textStyle="bold"
+            app:backgroundTint="@color/blanco"
+            app:cornerRadius="@dimen/dialog_boton_radio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTituloLogin" />
+
+        <!-- Botón Continuar con Facebook -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_boton_alto"
+            android:layout_marginTop="@dimen/dialog_boton_espaciado_top"
+            android:text="@string/btn_continuar_facebook"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/dialog_boton_texto"
+            android:textStyle="bold"
+            app:backgroundTint="@color/color_facebook"
+            app:cornerRadius="@dimen/dialog_boton_radio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnGoogle" />
+
+        <!-- Botón Continuar con Correo -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialog_boton_alto"
+            android:layout_marginTop="@dimen/dialog_boton_espaciado_top"
+            android:text="@string/btn_continuar_correo"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/dialog_boton_texto"
+            android:textStyle="bold"
+            app:backgroundTint="@color/color_boton_correo"
+            app:cornerRadius="@dimen/dialog_boton_radio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnFacebook" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

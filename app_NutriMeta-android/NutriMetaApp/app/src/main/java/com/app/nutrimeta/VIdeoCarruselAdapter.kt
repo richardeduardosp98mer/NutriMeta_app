@@ -33,7 +33,7 @@ class VideoCarouselAdapter(
         val videoUri = Uri.parse("android.resource://${context.packageName}/$videoResId")
         holder.videoView.setVideoURI(videoUri)
 
-        // Cuando el video finaliza, avisamos a MainActivity para pasar a la siguiente tarjeta
+        // Cuando el video finaliza, pasa a la siguiente
         holder.videoView.setOnCompletionListener {
             if (position == currentPlayingPosition) {
                 onVideoEnded()

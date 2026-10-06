@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colors">#072225</color>
+    <color name="indicador_activoColor">#FFB800</color>
+    <color name="indicador_inactivoColor">#4DFFFFFF</color>
+
+    <color name="colors">#000000</color>
+
     <color name="color_boton">#FFB800</color>
-    <color name="color_pregunta">#B0BEC5</color>
-    <color name="color_carru">#000000</color>
+
+    <!-- Diálogo de Inicio de Sesión -->
+    <color name="fondo_dialogo">#212121</color>
+    <color name="icono_cerrar_tint">#B0BEC5</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="color_facebook">#1877F2</color>
+    <color name="color_boton_correo">#3E3E3E</color>
 
 </resources>

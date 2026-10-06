@@ -4,5 +4,18 @@
     <string name="boton">Comenzar</string>
     <string name="texto_pregunta">¿Ya tienes una cuenta?</string>
     <string name="texto_sesion">Iniciar sesión</string>
+    <string name="texto_carrusel_inicial">Registra tus comidas</string>
+
+    <string name="carrusel_frase_1">Registra tus comidas\nen segundos</string>
+    <string name="carrusel_frase_2">Mira tu progreso\ny mejora cada dia</string>
+    <string name="carrusel_frase_3">Controla tus macros\ny alcanza tus objetivos</string>
+
+
+    <!-- Diálogo de Inicio de Sesión -->
+    <string name="desc_cerrar_dialogo">Cerrar</string>
+    <string name="titulo_iniciar_sesion">Iniciar sesión</string>
+    <string name="btn_continuar_google">Continuar con Google</string>
+    <string name="btn_continuar_facebook">Continuar con Facebook</string>
+    <string name="btn_continuar_correo">Continuar con Correo</string>
 
 </resources>

@@ -57,6 +57,21 @@
             android:background="@drawable/indicador_inactivo" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textoCarrusel"
+        android:layout_width="@dimen/boton_ba"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margenH_text_carru"
+        android:layout_marginTop="@dimen/margenT_text_carru"
+        android:gravity="center"
+        android:text="@string/texto_carrusel_inicial"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/tamaño_text_carru"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carrusel" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnComenzar"
         android:layout_width="@dimen/boton_ba"
@@ -87,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/texto_pregunta"
-            android:textColor="@color/color_pregunta"
+            android:textColor="@color/icono_cerrar_tint"
             android:textSize="@dimen/tamaño_text" />
 
         <TextView
