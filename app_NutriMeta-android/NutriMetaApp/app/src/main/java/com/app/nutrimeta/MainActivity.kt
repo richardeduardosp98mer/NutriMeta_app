@@ -1,20 +1,70 @@
 package com.app.nutrimeta
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.viewpager2.widget.ViewPager2
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var indicators: List<View>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val viewPager = findViewById<ViewPager2>(R.id.carrusel)
+
+        indicators = listOf(
+            findViewById(R.id.indicador1),
+            findViewById(R.id.indicador2),
+            findViewById(R.id.indicador3)
+        )
+
+        val videoList = listOf(
+            R.raw.plato_uno,
+            R.raw.plato_uno,
+            R.raw.plato_uno
+        )
+
+        // Adaptador con callback que avanza a la siguiente tarjeta al terminar el video
+        val adapter = VideoCarouselAdapter(videoList) {
+            val nextItem = (viewPager.currentItem + 1) % videoList.size
+            viewPager.setCurrentItem(nextItem, true)
+        }
+        viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = 3
+
+        // Efecto visual de escala y transparencia
+        viewPager.setPageTransformer { page, position ->
+            val scale = 0.85f + (1 - 0.85f) * (1 - abs(position))
+            page.scaleY = scale
+            page.alpha = 0.5f + (1 - 0.5f) * (1 - abs(position))
+        }
+
+        // Listener para actualizar las líneas y reproducir el video activo
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                updateIndicators(position)
+                adapter.playVideoAt(position)
+            }
+        })
+    }
+
+    private fun updateIndicators(selectedPosition: Int) {
+        val density = resources.displayMetrics.density
+        indicators.forEachIndexed { index, view ->
+            val isCurrent = index == selectedPosition
+            view.setBackgroundResource(
+                if (isCurrent) R.drawable.indicador_activo else R.drawable.indicador_inactivo
+            )
+
+            // La línea activa es más ancha (30dp) y las inactivas son más cortas (14dp)
+            val layoutParams = view.layoutParams
+            layoutParams.width = ((if (isCurrent) 30 else 14) * density).toInt()
+            view.layoutParams = layoutParams
         }
     }
 }

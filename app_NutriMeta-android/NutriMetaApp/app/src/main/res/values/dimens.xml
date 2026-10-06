@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="dimen_contenedor_carrusel">340dp</dimen>
+    <dimen name="indicador_activo">30dp</dimen>
+    <dimen name="indicador_inactivo">14dp</dimen>
+    <dimen name="indicador_alto">4dp</dimen>
+
+    <dimen name="boton_ba">0dp</dimen>
+    <dimen name="boton_al">56dp</dimen>
+    <dimen name="boton_margenH">32dp</dimen>
+    <dimen name="boton_margenB">72dp</dimen>
+    <dimen name="tamaño_text_boton">17sp</dimen>
+    <dimen name="radio_boton">28dp</dimen>
+    <dimen name="tamaño_text">14sp</dimen>
+    <dimen name="tamaño_margV_Carru">12dp</dimen>
+    <dimen name="tamaño_margH_Carru">20dp</dimen>
+    <dimen name="tamaño_carru">2dp</dimen>
+</resources>

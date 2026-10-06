@@ -5,15 +5,99 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colors"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".MainActivity">
 
-    <TextView
+    <!-- componente oficial de android studio para crear las vistas deslizables -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/carrusel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_contenedor_carrusel"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54">
+
+        <View
+            android:id="@+id/indicador1"
+            android:layout_width="@dimen/indicador_activo"
+            android:layout_height="@dimen/indicador_alto"
+            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:background="@drawable/indicador_activo" />
+
+        <View
+            android:id="@+id/indicador2"
+            android:layout_width="@dimen/indicador_inactivo"
+            android:layout_height="@dimen/indicador_alto"
+            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:background="@drawable/indicador_inactivo" />
+
+        <View
+            android:id="@+id/indicador3"
+            android:layout_width="@dimen/indicador_inactivo"
+            android:layout_height="@dimen/indicador_alto"
+            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:background="@drawable/indicador_inactivo" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnComenzar"
+        android:layout_width="@dimen/boton_ba"
+        android:layout_height="@dimen/boton_al"
+        android:layout_marginHorizontal="@dimen/boton_margenH"
+        android:layout_marginBottom="@dimen/boton_margenB"
+        android:text="@string/boton"
+        android:textColor="@color/colors"
+        android:textSize="@dimen/tamaño_text_boton"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton"
+        app:cornerRadius="@dimen/radio_boton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/radio_boton"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_pregunta"
+            android:textColor="@color/color_pregunta"
+            android:textSize="@dimen/tamaño_text" />
+
+        <TextView
+            android:id="@+id/linkIniciarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_sesion"
+            android:textColor="@color/color_boton"
+            android:textSize="@dimen/tamaño_text"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

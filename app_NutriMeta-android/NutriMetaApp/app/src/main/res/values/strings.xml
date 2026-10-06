@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NutriMeta</string>
+
+    <string name="boton">Comenzar</string>
+    <string name="texto_pregunta">¿Ya tienes una cuenta?</string>
+    <string name="texto_sesion">Iniciar sesión</string>
+
 </resources>
