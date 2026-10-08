@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colors">
+
+    <TextView
+        android:id="@+id/tvTituloPregunta"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_108"
+        android:gravity="center"
+        android:text="@string/titulo_pregunta_objetivo"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtituloPregunta"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center"
+        android:text="@string/subtitulo_pregunta_objetivo"
+        android:textColor="@color/color_subtitulo_objetivo"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloPregunta" />
+
+    <LinearLayout
+        android:id="@+id/layoutOpciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtituloPregunta"
+        app:layout_constraintVertical_bias="0.45">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPerderGrasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_16">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_perder_grasa"
+                        android:textSize="@dimen/sp_22" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo_perder_grasa"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:text="@string/desc_perder_grasa"
+                        android:textColor="@color/color_subtitulo_objetivo"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:text="@string/indicador_flecha_opcion"
+                    android:textColor="@color/color_flecha_opcion"
+                    android:textSize="@dimen/sp_24" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGanarMusculo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_16">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_ganar_musculo"
+                        android:textSize="@dimen/sp_22" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo_ganar_musculo"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:text="@string/desc_ganar_musculo"
+                        android:textColor="@color/color_subtitulo_objetivo"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:text="@string/indicador_flecha_opcion"
+                    android:textColor="@color/color_flecha_opcion"
+                    android:textSize="@dimen/sp_24" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMantenerPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_16">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_mantener_peso"
+                        android:textSize="@dimen/sp_22" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_16"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo_mantener_peso"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:text="@string/desc_mantener_peso"
+                        android:textColor="@color/color_subtitulo_objetivo"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:text="@string/indicador_flecha_opcion"
+                    android:textColor="@color/color_flecha_opcion"
+                    android:textSize="@dimen/sp_24" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

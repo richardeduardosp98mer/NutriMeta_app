@@ -11,11 +11,123 @@
     <string name="carrusel_frase_3">Controla tus macros\ny alcanza tus objetivos</string>
 
 
-    <!-- Diálogo de Inicio de Sesión -->
+    <!-- Dialogo de Inicio de Sesion -->
     <string name="desc_cerrar_dialogo">Cerrar</string>
     <string name="titulo_iniciar_sesion">Iniciar sesión</string>
     <string name="btn_continuar_google">Continuar con Google</string>
-    <string name="btn_continuar_facebook">Continuar con Facebook</string>
     <string name="btn_continuar_correo">Continuar con Correo</string>
 
+    <!-- Pantalla Objetivo -->
+    <string name="titulo_pregunta_objetivo">¿Cuál es tu objetivo?</string>
+    <string name="subtitulo_pregunta_objetivo">Calcularemos tus calorías necesarias para lograrlo</string>
+
+    <string name="titulo_perder_grasa">Perder Grasa</string>
+    <string name="desc_perder_grasa">Optimiza la pérdida de peso y conserva tu masa muscular</string>
+
+    <string name="titulo_ganar_musculo">Ganar Músculo</string>
+    <string name="desc_ganar_musculo">Incrementa tu peso y hazte más fuerte</string>
+
+    <string name="titulo_mantener_peso">Mantener Peso</string>
+    <string name="desc_mantener_peso">Mantén tu peso estable y busca la recomposición corporal</string>
+
+    <string name="emoji_perder_grasa">⚡</string>
+    <string name="emoji_ganar_musculo">🏋️</string>
+    <string name="emoji_mantener_peso">⚖️</string>
+    <string name="indicador_flecha_opcion">›</string>
+
+    <!-- Pantalla Transición Calculo de Calorías -->
+    <string name="badge_nutrimeta">PLAN PERSONALIZADO</string>
+    <string name="titulo_calcular_calorias">Calculemos cuántas calorías necesitas al día</string>
+    <string name="subtitulo_calcular_calorias">Ajustaremos tu plan a tu metabolismo y gasto energético diario</string>
+    <string name="btn_continuar">Continuar</string>
+    <string name="desc_boton_volver">Volver atrás</string>
+
+    <!-- Pantalla Sobre Usuario -->
+    <string name="emoji_sobre_ti">📋</string>
+    <string name="titulo_sobre_ti">Sobre ti</string>
+    <string name="subtitulo_sobre_ti">Esta información nos ayudará a calcular tus calorías objetivo</string>
+
+    <string name="emoji_campo_sexo">👤</string>
+    <string name="campo_sexo">Sexo</string>
+
+    <string name="emoji_campo_edad">🎂</string>
+    <string name="campo_edad">Edad</string>
+
+    <string name="emoji_campo_altura">📏</string>
+    <string name="campo_altura">Altura</string>
+
+    <string name="emoji_campo_peso">⚖️</string>
+    <string name="campo_peso">Peso</string>
+
+    <string name="accion_seleccionar">Seleccionar ›</string>
+
+    <!-- Dialogo Sexo -->
+    <string name="titulo_dialogo_sexo">Sexo</string>
+    <string name="opcion_sexo_hombre">Hombre</string>
+    <string name="opcion_sexo_mujer">Mujer</string>
+    <string name="formato_valor_seleccionado">%1$s ›</string>
+
+    <!-- Selector de Edad -->
+    <string name="titulo_dialogo_edad">Edad</string>
+    <string name="unidad_anos">años</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="formato_edad_valor">%1$d años ›</string>
+    <string name="desc_disminuir_edad">Disminuir edad</string>
+    <string name="desc_aumentar_edad">Aumentar edad</string>
+
+    <!-- Selector de Altura -->
+    <string name="titulo_dialogo_altura">Altura</string>
+    <string name="unidad_cm">cm</string>
+    <string name="formato_altura_valor">%1$d cm ›</string>
+    <string name="desc_disminuir_altura">Disminuir altura</string>
+    <string name="desc_aumentar_altura">Aumentar altura</string>
+
+    <!-- Selector de Peso -->
+    <string name="titulo_dialogo_peso">Peso</string>
+    <string name="tab_peso_kg">kg</string>
+    <string name="tab_peso_bluetooth">Bluetooth</string>
+    <string name="formato_peso_valor">%1$.1f kg ›</string>
+    <string name="punto_decimal">.</string>
+
+    <string name="desc_disminuir_peso">Disminuir peso</string>
+    <string name="desc_aumentar_peso">Aumentar peso</string>
+    <string name="desc_disminuir_decimal">Disminuir decimal</string>
+    <string name="desc_aumentar_decimal">Aumentar decimal</string>
+
+    <!-- Vista Bluetooth -->
+    <string name="emoji_balanza">⚖️</string>
+    <string name="titulo_balanza_bluetooth">Sincronizar balanza</string>
+    <string name="subtitulo_balanza_bluetooth">Enciende tu balanza y súbete para capturar tu peso automáticamente</string>
+    <string name="estado_balanza_buscando">Buscando balanza cercana…</string>
+
+    <!-- Pantalla Registro Opciones -->
+    <string name="auth_titulo">¡Casi listo! Únete ahora para\nobtener tu plan personalizado</string>
+    <string name="auth_btn_google">Continuar con Google</string>
+    <string name="auth_btn_email">Continuar con Email</string>
+    <string name="auth_terminos">Al continuar, aceptas los\n&lt;u&gt;Términos y Condiciones&lt;/u&gt; y la &lt;u&gt;Política de Privacidad&lt;/u&gt;</string>
+
+    <!-- Diálogo de Registro por Correo -->
+    <string name="registro_email_dialog_titulo">Crear cuenta con Email</string>
+    <string name="registro_email_dialog_subtitulo">Ingresa tus credenciales para registrar tu perfil</string>
+    <string name="hint_correo">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_registrarse">Registrarse</string>
+
+    <!-- Validaciones y Mensajes -->
+    <string name="error_correo_requerido">Ingresa tu correo</string>
+    <string name="error_password_longitud">La contraseña debe tener al menos %1$d caracteres</string>
+    <string name="registro_exito_formato">Cuenta creada: %1$s\nPeso: %2$.1f kg | Meta: %3$s</string>
+    <string name="registro_error_formato">Error: %1$s</string>
+
+    <string name="titulo_login_email">Iniciar sesión</string>
+    <string name="subtitulo_login_email">Ingresa tus credenciales para acceder</string>
+
+    <string name="titulo_iniciar_sesion_correo">Ingresar con Correo</string>
+    <string name="btn_iniciar_sesion">Iniciar sesión</string>
+
+    <string name="error_password_requerida">Ingresa tu contraseña</string>
+    <string name="error_credenciales_invalidas">Correo o contraseña incorrectos</string>
+    <string name="login_exito_formato">Bienvenido: %1$s</string>
+    <string name="error_login_formato">Error: %1$s</string>
 </resources>

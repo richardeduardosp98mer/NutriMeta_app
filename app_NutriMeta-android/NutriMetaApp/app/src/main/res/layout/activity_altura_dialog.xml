@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AlturaDialog">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/btnRestarAltura"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_disminuir_altura"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_minus" />
+
+        <TextView
+            android:id="@+id/tvValorAlturaDialog"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginHorizontal="@dimen/dp_12"
+            android:background="@drawable/fondo_numero_stepper"
+            android:gravity="center"
+            android:text="170"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnSumarAltura"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_aumentar_altura"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_plus" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_14"
+            android:text="@string/unidad_cm"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGuardarAltura"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/btn_guardar"
+        android:textAllCaps="false"
+        android:textColor="@color/colors"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton"
+        app:cornerRadius="@dimen/dp_27" />
+
+</LinearLayout>

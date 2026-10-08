@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginDialog">
+
+    <!-- Botón Continuar con Google -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_54"
+        android:text="@string/btn_continuar_google"
+        android:textAllCaps="false"
+        android:textColor="@color/colors"
+        android:textSize="@dimen/sp_15"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blanco"
+        app:cornerRadius="@dimen/dp_27" />
+
+    <!-- Botón Continuar con Correo -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="@string/btn_continuar_correo"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/sp_15"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton_correo"
+        app:cornerRadius="@dimen/dp_27" />
+
+</LinearLayout>

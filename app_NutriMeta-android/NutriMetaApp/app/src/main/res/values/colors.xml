@@ -7,11 +7,59 @@
 
     <color name="color_boton">#FFB800</color>
 
-    <!-- Diálogo de Inicio de Sesión -->
+    <!-- Dialogo de Inicio de Sesion -->
     <color name="fondo_dialogo">#212121</color>
     <color name="icono_cerrar_tint">#B0BEC5</color>
     <color name="blanco">#FFFFFF</color>
     <color name="color_facebook">#1877F2</color>
     <color name="color_boton_correo">#3E3E3E</color>
+
+    <!-- Pantalla Objetivo -->
+    <color name="fondo_tarjeta_objetivo">#222224</color>
+    <color name="color_subtitulo_objetivo">#9E9E9E</color>
+
+    <color name="borde_tarjeta_objetivo">#33383F</color>
+    <color name="fondo_icono_tarjeta">#262B30</color>
+    <color name="color_flecha_opcion">#757F8A</color>
+
+    <!-- Pantalla Transición Calculo de Calorías -->
+    <color name="color_anillo_exterior">#0DFFB800</color>
+    <color name="color_anillo_medio">#22FFB800</color>
+    <color name="color_disco_centro">#1A2228</color>
+    <color name="color_badge_fondo">#14FFFFFF</color>
+
+    <!-- Colores para botones deshabilitados / activos -->
+    <color name="color_boton_deshabilitado">#21282D</color>
+    <color name="color_texto_deshabilitado">#5C6975</color>
+
+    <!-- Dialogo Sexo -->
+    <color name="fondo_opcion_dialogo">#262B30</color>
+    <color name="color_radio_inactivo">#58616B</color>
+    <color name="color_valor_seleccionado">#E2E8F0</color>
+
+    <!-- Stepper de Edad -->
+    <color name="fondo_stepper_boton">#353B42</color>
+    <color name="fondo_stepper_numero">#262B30</color>
+
+    <!-- Toggle Segmentado de Peso -->
+    <color name="fondo_toggle_contenedor">#262B30</color>
+    <color name="fondo_toggle_activo">#443812</color>
+    <color name="color_texto_toggle_inactivo">#8A94A0</color>
+
+    <!-- Colores Auth -->
+    <color name="auth_background">#000000</color>
+    <color name="auth_btn_google_bg">#FFFFFF</color>
+    <color name="auth_btn_google_text">#000000</color>
+    <color name="auth_btn_email_bg">#242424</color>
+    <color name="auth_btn_email_text">#FFFFFF</color>
+    <color name="auth_texto_terminos">#B0B0B0</color>
+
+    <color name="dialog_surface_dark">#1E1E1E</color>
+    <color name="text_title_light">#FFFFFF</color>
+    <color name="text_subtitle_muted">#AAAAAA</color>
+    <color name="text_btn_cancelar">#888888</color>
+
+    <color name="input_stroke_inactive">#66FFFFFF</color>
+    <color name="input_hint">#AAAAAA</color>
 
 </resources>

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    //para firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -19,6 +22,16 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -26,6 +39,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -35,6 +51,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
 
     buildFeatures{
         viewBinding = true
@@ -50,4 +67,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //nuevas dependencias :)
+
+    // Google sincronizacion
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
+    //correo
+    implementation("com.google.firebase:firebase-auth:23.0.0")
 }

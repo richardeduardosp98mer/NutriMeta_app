@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SobreUsuarioActivity"
+    android:background="@color/colors">
+
+    <!-- Botón Retroceso -->
+    <ImageView
+        android:id="@+id/btnVolverSobreTi"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/desc_boton_volver"
+        android:focusable="true"
+        android:padding="@dimen/dp_12"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blanco" />
+
+    <!-- Icono de cabecera -->
+    <FrameLayout
+        android:id="@+id/contenedorIconoHeader"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginTop="@dimen/dp_32"
+        android:background="@drawable/fondo_icono_circular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/emoji_sobre_ti"
+            android:textSize="@dimen/sp_22" />
+    </FrameLayout>
+
+    <!-- Título principal -->
+    <TextView
+        android:id="@+id/tvTituloSobreTi"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="center"
+        android:text="@string/titulo_sobre_ti"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenedorIconoHeader" />
+
+    <!-- Subtítulo explicativo -->
+    <TextView
+        android:id="@+id/tvSubtituloSobreTi"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center"
+        android:text="@string/subtitulo_sobre_ti"
+        android:textColor="@color/color_subtitulo_objetivo"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloSobreTi" />
+
+    <!-- Lista de tarjetas de datos -->
+    <LinearLayout
+        android:id="@+id/layoutCamposSobreTi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnContinuarSobreTi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtituloSobreTi"
+        app:layout_constraintVertical_bias="0.4">
+
+        <!-- Campo 1: Sexo -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_14">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_campo_sexo"
+                        android:textSize="@dimen/sp_18" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_weight="1"
+                    android:text="@string/campo_sexo"
+                    android:textColor="@color/blanco"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvValorSexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accion_seleccionar"
+                    android:textColor="@color/color_boton"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Campo 2: Edad -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_14">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_campo_edad"
+                        android:textSize="@dimen/sp_18" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_weight="1"
+                    android:text="@string/campo_edad"
+                    android:textColor="@color/blanco"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvValorEdad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accion_seleccionar"
+                    android:textColor="@color/color_boton"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Campo 3: Altura -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_14">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_campo_altura"
+                        android:textSize="@dimen/sp_18" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_weight="1"
+                    android:text="@string/campo_altura"
+                    android:textColor="@color/blanco"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvValorAltura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accion_seleccionar"
+                    android:textColor="@color/color_boton"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Campo 4: Peso -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+            app:cardCornerRadius="@dimen/dp_20"
+            app:cardElevation="@dimen/dp_0"
+            app:strokeColor="@color/borde_tarjeta_objetivo"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_14">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:background="@drawable/fondo_icono_circular">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/emoji_campo_peso"
+                        android:textSize="@dimen/sp_18" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_weight="1"
+                    android:text="@string/campo_peso"
+                    android:textColor="@color/blanco"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvValorPeso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accion_seleccionar"
+                    android:textColor="@color/color_boton"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Botón Continuar (inicialmente deshabilitado hasta que llene los datos) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnContinuarSobreTi"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:enabled="false"
+        android:text="@string/btn_continuar"
+        android:textAllCaps="false"
+        android:textColor="@color/color_texto_deshabilitado"
+        android:textSize="@dimen/sp_17"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton_deshabilitado"
+        app:cornerRadius="@dimen/dp_28"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

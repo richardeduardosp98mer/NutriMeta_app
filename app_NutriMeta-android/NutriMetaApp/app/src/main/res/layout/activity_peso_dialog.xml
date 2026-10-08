@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".PesoDialog">
+
+    <!-- Toggle Superior (kg / Bluetooth) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fondo_toggle_contenedor"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_4">
+
+        <!-- Opción Manual (kg) -->
+        <TextView
+            android:id="@+id/tabModoKg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_toggle_activo"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="@dimen/dp_28"
+            android:paddingVertical="@dimen/dp_8"
+            android:text="@string/tab_peso_kg"
+            android:textColor="@color/color_boton"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold" />
+
+        <!-- Opción Balanza Bluetooth -->
+        <TextView
+            android:id="@+id/tabModoBluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="@dimen/dp_20"
+            android:paddingVertical="@dimen/dp_8"
+            android:text="@string/tab_peso_bluetooth"
+            android:textColor="@color/color_texto_toggle_inactivo"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ================= CONTENEDOR MODO MANUAL (STEPPERS) ================= -->
+    <LinearLayout
+        android:id="@+id/layoutModoManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <!-- PARTE ENTERA: [ - ] [ 70 ] [ + ] -->
+        <ImageView
+            android:id="@+id/btnRestarPesoEntero"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_disminuir_peso"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_minus" />
+
+        <TextView
+            android:id="@+id/tvPesoEntero"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginHorizontal="@dimen/dp_8"
+            android:background="@drawable/fondo_numero_stepper"
+            android:gravity="center"
+            android:text="70"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnSumarPesoEntero"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_aumentar_peso"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_plus" />
+
+        <!-- PUNTO DECIMAL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_6"
+            android:text="@string/punto_decimal"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_22"
+            android:textStyle="bold" />
+
+        <!-- PARTE DECIMAL: [ - ] [ 0 ] [ + ] -->
+        <ImageView
+            android:id="@+id/btnRestarPesoDecimal"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_disminuir_decimal"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_minus" />
+
+        <TextView
+            android:id="@+id/tvPesoDecimal"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginHorizontal="@dimen/dp_8"
+            android:background="@drawable/fondo_numero_stepper"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnSumarPesoDecimal"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/fondo_boton_stepper"
+            android:clickable="true"
+            android:contentDescription="@string/desc_aumentar_decimal"
+            android:focusable="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_plus" />
+
+        <!-- UNIDAD (kg) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="@string/tab_peso_kg"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ================= CONTENEDOR MODO BLUETOOTH ================= -->
+    <LinearLayout
+        android:id="@+id/layoutModoBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:background="@drawable/fondo_icono_circular">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/emoji_balanza"
+                android:textSize="@dimen/sp_22" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvTituloBluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/titulo_balanza_bluetooth"
+            android:textColor="@color/blanco"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSubtituloBluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:gravity="center"
+            android:text="@string/subtitulo_balanza_bluetooth"
+            android:textColor="@color/color_subtitulo_objetivo"
+            android:textSize="@dimen/sp_12" />
+
+        <!-- Indicador de peso recibido por balanza -->
+        <TextView
+            android:id="@+id/tvPesoBluetoothLectura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="@string/estado_balanza_buscando"
+            android:textColor="@color/color_boton"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- BOTÓN GUARDAR -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGuardarPeso"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="@string/btn_guardar"
+        android:textAllCaps="false"
+        android:textColor="@color/colors"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton"
+        app:cornerRadius="@dimen/dp_27" />
+
+</LinearLayout>

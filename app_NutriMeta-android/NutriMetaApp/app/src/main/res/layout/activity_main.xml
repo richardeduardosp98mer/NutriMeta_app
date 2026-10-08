@@ -14,7 +14,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/carrusel"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_contenedor_carrusel"
+        android:layout_height="@dimen/dp_340"
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,36 +37,36 @@
 
         <View
             android:id="@+id/indicador1"
-            android:layout_width="@dimen/indicador_activo"
-            android:layout_height="@dimen/indicador_alto"
-            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_4"
+            android:layout_marginHorizontal="@dimen/dp_4"
             android:background="@drawable/indicador_activo" />
 
         <View
             android:id="@+id/indicador2"
-            android:layout_width="@dimen/indicador_inactivo"
-            android:layout_height="@dimen/indicador_alto"
-            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_4"
+            android:layout_marginHorizontal="@dimen/dp_4"
             android:background="@drawable/indicador_inactivo" />
 
         <View
             android:id="@+id/indicador3"
-            android:layout_width="@dimen/indicador_inactivo"
-            android:layout_height="@dimen/indicador_alto"
-            android:layout_marginHorizontal="@dimen/indicador_alto"
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_4"
+            android:layout_marginHorizontal="@dimen/dp_4"
             android:background="@drawable/indicador_inactivo" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textoCarrusel"
-        android:layout_width="@dimen/boton_ba"
+        android:layout_width="@dimen/dp_0"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margenH_text_carru"
-        android:layout_marginTop="@dimen/margenT_text_carru"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_24"
         android:gravity="center"
         android:text="@string/texto_carrusel_inicial"
         android:textColor="@color/blanco"
-        android:textSize="@dimen/tamaño_text_carru"
+        android:textSize="@dimen/sp_24"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,16 +74,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnComenzar"
-        android:layout_width="@dimen/boton_ba"
-        android:layout_height="@dimen/boton_al"
-        android:layout_marginHorizontal="@dimen/boton_margenH"
-        android:layout_marginBottom="@dimen/boton_margenB"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginBottom="@dimen/dp_72"
         android:text="@string/boton"
         android:textColor="@color/colors"
-        android:textSize="@dimen/tamaño_text_boton"
+        android:textSize="@dimen/sp_17"
         android:textStyle="bold"
         app:backgroundTint="@color/color_boton"
-        app:cornerRadius="@dimen/radio_boton"
+        app:cornerRadius="@dimen/dp_28"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -91,7 +91,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/radio_boton"
+        android:layout_marginBottom="@dimen/dp_28"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:text="@string/texto_pregunta"
             android:textColor="@color/icono_cerrar_tint"
-            android:textSize="@dimen/tamaño_text" />
+            android:textSize="@dimen/sp_14" />
 
         <TextView
             android:id="@+id/linkIniciarSesion"
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:text="@string/texto_sesion"
             android:textColor="@color/color_boton"
-            android:textSize="@dimen/tamaño_text"
+            android:textSize="@dimen/sp_14"
             android:textStyle="bold" />
     </LinearLayout>
 

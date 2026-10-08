@@ -26,11 +26,18 @@ class MainActivity : AppCompatActivity() {
         val textoCarrusel = findViewById<TextView>(R.id.textoCarrusel)
         textoCarrusel.setText(frases[0])
 
+
+        val btnComenzar = findViewById<View>(R.id.btnComenzar)
+        btnComenzar.setOnClickListener {
+            val intent = android.content.Intent(this, ObjetivoActivity::class.java)
+            startActivity(intent)
+        }
+
         //configuracion del boton iniciar sesion
         val linkIniciarSesion = findViewById<TextView>(R.id.linkIniciarSesion)
 
         linkIniciarSesion.setOnClickListener {
-            LoginDialogFragment().show(supportFragmentManager, "LoginDialog")
+            LoginDialog().show(supportFragmentManager, "LoginDialog")
         }
         //////
 
@@ -41,9 +48,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         val videoList = listOf(
-            R.raw.plato_uno,
-            R.raw.plato_uno,
-            R.raw.plato_uno
+            R.raw.video_uno,
+            R.raw.video_dos,
+            R.raw.video_tres
         )
 
         // Adaptador con callback que avanza a la siguiente tarjeta al terminar el video

@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/tamaño_margH_Carru"
-    android:layout_marginVertical="@dimen/tamaño_margV_Carru"
+    android:layout_marginHorizontal="@dimen/dp_28"
+    android:layout_marginVertical="@dimen/dp_12"
     app:cardBackgroundColor="@color/colors"
-    app:cardCornerRadius="@dimen/radio_boton"
+    app:cardCornerRadius="@dimen/dp_28"
     app:strokeColor="@color/color_boton"
-    app:strokeWidth="@dimen/tamaño_carru">
+    app:strokeWidth="@dimen/dp_2">
 
     <!-- Reproductor para los videos del carrusel -->
     <VideoView
