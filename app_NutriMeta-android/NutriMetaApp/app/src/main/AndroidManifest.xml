@@ -5,21 +5,14 @@
     <!-- Permisos Bluetooth para Android 12+ -->
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
-    <!-- Permisos de ubicación -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- Compatibilidad con Android 11 o inferior -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
-
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30" />
-
-    <!-- La aplicación requiere Bluetooth LE -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -33,37 +26,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriMeta">
-
         <!-- Activities -->
         <activity
             android:name=".RegistroActivity"
             android:exported="false" />
-
         <activity
             android:name=".SobreUsuarioActivity"
             android:exported="false" />
-
         <activity
             android:name=".CalculoCaloriasActivity"
             android:exported="false" />
-
         <activity
             android:name=".ObjetivoActivity"
             android:exported="false" />
-
-        <!-- Activity principal -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>

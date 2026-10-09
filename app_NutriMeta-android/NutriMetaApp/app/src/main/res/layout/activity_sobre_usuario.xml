@@ -75,243 +75,311 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloSobreTi" />
 
-    <!-- Lista de tarjetas de datos -->
-    <LinearLayout
-        android:id="@+id/layoutCamposSobreTi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <!-- Scroll para que las cinco tarjetas no tapen el botón en pantallas pequeñas -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollCamposSobreTi"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
         android:layout_marginHorizontal="@dimen/dp_20"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btnContinuarSobreTi"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:clipToPadding="false"
+        android:overScrollMode="ifContentScrolls"
+        app:layout_constraintBottom_toTopOf="@id/btnContinuarSobreTi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtituloSobreTi"
-        app:layout_constraintVertical_bias="0.4">
+        app:layout_constraintTop_toBottomOf="@id/tvSubtituloSobreTi">
 
-        <!-- Campo 1: Sexo -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardSexo"
+        <LinearLayout
+            android:id="@+id/layoutCamposSobreTi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
-            app:cardCornerRadius="@dimen/dp_20"
-            app:cardElevation="@dimen/dp_0"
-            app:strokeColor="@color/borde_tarjeta_objetivo"
-            app:strokeWidth="@dimen/dp_1">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_8">
 
-            <LinearLayout
+            <!-- Campo 1: Sexo -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSexo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/dp_16"
-                android:paddingVertical="@dimen/dp_14">
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="@dimen/dp_0"
+                app:strokeColor="@color/borde_tarjeta_objetivo"
+                app:strokeWidth="@dimen/dp_1">
 
-                <FrameLayout
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:background="@drawable/fondo_icono_circular">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/fondo_icono_circular">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/emoji_campo_sexo"
+                            android:textSize="@dimen/sp_18" />
+                    </FrameLayout>
 
                     <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_14"
+                        android:layout_weight="1"
+                        android:text="@string/campo_sexo"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvValorSexo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/emoji_campo_sexo"
-                        android:textSize="@dimen/sp_18" />
-                </FrameLayout>
+                        android:text="@string/accion_seleccionar"
+                        android:textColor="@color/color_boton"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_14"
-                    android:layout_weight="1"
-                    android:text="@string/campo_sexo"
-                    android:textColor="@color/blanco"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvValorSexo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accion_seleccionar"
-                    android:textColor="@color/color_boton"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Campo 2: Edad -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardEdad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
-            app:cardCornerRadius="@dimen/dp_20"
-            app:cardElevation="@dimen/dp_0"
-            app:strokeColor="@color/borde_tarjeta_objetivo"
-            app:strokeWidth="@dimen/dp_1">
-
-            <LinearLayout
+            <!-- Campo 2: Edad -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEdad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/dp_16"
-                android:paddingVertical="@dimen/dp_14">
+                android:layout_marginTop="@dimen/dp_12"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="@dimen/dp_0"
+                app:strokeColor="@color/borde_tarjeta_objetivo"
+                app:strokeWidth="@dimen/dp_1">
 
-                <FrameLayout
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:background="@drawable/fondo_icono_circular">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/fondo_icono_circular">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/emoji_campo_edad"
+                            android:textSize="@dimen/sp_18" />
+                    </FrameLayout>
 
                     <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_14"
+                        android:layout_weight="1"
+                        android:text="@string/campo_edad"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvValorEdad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/emoji_campo_edad"
-                        android:textSize="@dimen/sp_18" />
-                </FrameLayout>
+                        android:text="@string/accion_seleccionar"
+                        android:textColor="@color/color_boton"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_14"
-                    android:layout_weight="1"
-                    android:text="@string/campo_edad"
-                    android:textColor="@color/blanco"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvValorEdad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accion_seleccionar"
-                    android:textColor="@color/color_boton"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Campo 3: Altura -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAltura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
-            app:cardCornerRadius="@dimen/dp_20"
-            app:cardElevation="@dimen/dp_0"
-            app:strokeColor="@color/borde_tarjeta_objetivo"
-            app:strokeWidth="@dimen/dp_1">
-
-            <LinearLayout
+            <!-- Campo 3: Altura -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAltura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/dp_16"
-                android:paddingVertical="@dimen/dp_14">
+                android:layout_marginTop="@dimen/dp_12"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="@dimen/dp_0"
+                app:strokeColor="@color/borde_tarjeta_objetivo"
+                app:strokeWidth="@dimen/dp_1">
 
-                <FrameLayout
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:background="@drawable/fondo_icono_circular">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/fondo_icono_circular">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/emoji_campo_altura"
+                            android:textSize="@dimen/sp_18" />
+                    </FrameLayout>
 
                     <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_14"
+                        android:layout_weight="1"
+                        android:text="@string/campo_altura"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvValorAltura"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/emoji_campo_altura"
-                        android:textSize="@dimen/sp_18" />
-                </FrameLayout>
+                        android:text="@string/accion_seleccionar"
+                        android:textColor="@color/color_boton"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_14"
-                    android:layout_weight="1"
-                    android:text="@string/campo_altura"
-                    android:textColor="@color/blanco"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvValorAltura"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accion_seleccionar"
-                    android:textColor="@color/color_boton"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Campo 4: Peso -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_12"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
-            app:cardCornerRadius="@dimen/dp_20"
-            app:cardElevation="@dimen/dp_0"
-            app:strokeColor="@color/borde_tarjeta_objetivo"
-            app:strokeWidth="@dimen/dp_1">
-
-            <LinearLayout
+            <!-- Campo 4: Peso -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPeso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/dp_16"
-                android:paddingVertical="@dimen/dp_14">
+                android:layout_marginTop="@dimen/dp_12"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="@dimen/dp_0"
+                app:strokeColor="@color/borde_tarjeta_objetivo"
+                app:strokeWidth="@dimen/dp_1">
 
-                <FrameLayout
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:background="@drawable/fondo_icono_circular">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/fondo_icono_circular">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/emoji_campo_peso"
+                            android:textSize="@dimen/sp_18" />
+                    </FrameLayout>
 
                     <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_14"
+                        android:layout_weight="1"
+                        android:text="@string/campo_peso"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvValorPeso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/emoji_campo_peso"
-                        android:textSize="@dimen/sp_18" />
-                </FrameLayout>
+                        android:text="@string/accion_seleccionar"
+                        android:textColor="@color/color_boton"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="@dimen/dp_0"
+            <!-- Campo 5: Actividad física -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/fondo_tarjeta_objetivo"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="@dimen/dp_0"
+                app:strokeColor="@color/borde_tarjeta_objetivo"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_14"
-                    android:layout_weight="1"
-                    android:text="@string/campo_peso"
-                    android:textColor="@color/blanco"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
 
-                <TextView
-                    android:id="@+id/tvValorPeso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accion_seleccionar"
-                    android:textColor="@color/color_boton"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <FrameLayout
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/fondo_icono_circular">
 
-    </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/emoji_campo_actividad"
+                            android:textSize="@dimen/sp_18" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_14"
+                        android:layout_weight="1"
+                        android:text="@string/campo_actividad"
+                        android:textColor="@color/blanco"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvValorActividad"
+                        android:gravity="end"
+                        android:maxLines="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accion_seleccionar"
+                        android:textColor="@color/color_boton"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- Botón Continuar (inicialmente deshabilitado hasta que llene los datos) -->
     <com.google.android.material.button.MaterialButton

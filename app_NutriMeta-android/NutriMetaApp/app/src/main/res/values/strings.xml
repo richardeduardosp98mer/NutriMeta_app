@@ -1,4 +1,6 @@
 <resources>
+
+    <!-- ==================== GENERAL ==================== -->
     <string name="app_name">NutriMeta</string>
 
     <string name="boton">Comenzar</string>
@@ -6,18 +8,26 @@
     <string name="texto_sesion">Iniciar sesión</string>
     <string name="texto_carrusel_inicial">Registra tus comidas</string>
 
+    <!-- ==================== CARRUSEL INICIAL ==================== -->
     <string name="carrusel_frase_1">Registra tus comidas\nen segundos</string>
-    <string name="carrusel_frase_2">Mira tu progreso\ny mejora cada dia</string>
+    <string name="carrusel_frase_2">Mira tu progreso\ny mejora cada día</string>
     <string name="carrusel_frase_3">Controla tus macros\ny alcanza tus objetivos</string>
 
 
-    <!-- Dialogo de Inicio de Sesion -->
+    <!-- ==================== INICIO DE SESIÓN ==================== -->
     <string name="desc_cerrar_dialogo">Cerrar</string>
-    <string name="titulo_iniciar_sesion">Iniciar sesión</string>
+    <string name="titulo_iniciar_sesion">@string/texto_sesion</string>
     <string name="btn_continuar_google">Continuar con Google</string>
     <string name="btn_continuar_correo">Continuar con Correo</string>
 
-    <!-- Pantalla Objetivo -->
+    <!-- Login por correo -->
+    <string name="titulo_login_email">@string/texto_sesion</string>
+    <string name="subtitulo_login_email">Ingresa tus credenciales para acceder</string>
+
+    <string name="titulo_iniciar_sesion_correo">Ingresar con Correo</string>
+    <string name="btn_iniciar_sesion">@string/texto_sesion</string>
+
+    <!-- ==================== OBJETIVO ==================== -->
     <string name="titulo_pregunta_objetivo">¿Cuál es tu objetivo?</string>
     <string name="subtitulo_pregunta_objetivo">Calcularemos tus calorías necesarias para lograrlo</string>
 
@@ -35,14 +45,17 @@
     <string name="emoji_mantener_peso">⚖️</string>
     <string name="indicador_flecha_opcion">›</string>
 
-    <!-- Pantalla Transición Calculo de Calorías -->
+
+    <!-- ==================== CÁLCULO DE CALORÍAS ==================== -->
     <string name="badge_nutrimeta">PLAN PERSONALIZADO</string>
     <string name="titulo_calcular_calorias">Calculemos cuántas calorías necesitas al día</string>
     <string name="subtitulo_calcular_calorias">Ajustaremos tu plan a tu metabolismo y gasto energético diario</string>
+
     <string name="btn_continuar">Continuar</string>
     <string name="desc_boton_volver">Volver atrás</string>
 
-    <!-- Pantalla Sobre Usuario -->
+
+    <!-- ==================== SOBRE TI ==================== -->
     <string name="emoji_sobre_ti">📋</string>
     <string name="titulo_sobre_ti">Sobre ti</string>
     <string name="subtitulo_sobre_ti">Esta información nos ayudará a calcular tus calorías objetivo</string>
@@ -61,28 +74,37 @@
 
     <string name="accion_seleccionar">Seleccionar ›</string>
 
-    <!-- Dialogo Sexo -->
+
+    <!-- ==================== SELECTOR DE SEXO ==================== -->
     <string name="titulo_dialogo_sexo">Sexo</string>
     <string name="opcion_sexo_hombre">Hombre</string>
     <string name="opcion_sexo_mujer">Mujer</string>
     <string name="formato_valor_seleccionado">%1$s ›</string>
 
-    <!-- Selector de Edad -->
+
+    <!-- ==================== SELECTOR DE EDAD ==================== -->
     <string name="titulo_dialogo_edad">Edad</string>
     <string name="unidad_anos">años</string>
     <string name="btn_guardar">Guardar</string>
     <string name="formato_edad_valor">%1$d años ›</string>
+
     <string name="desc_disminuir_edad">Disminuir edad</string>
     <string name="desc_aumentar_edad">Aumentar edad</string>
+    <string name="campo_fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="ayuda_fecha_nacimiento">Toca el campo para seleccionar tu fecha de nacimiento</string>
+    <string name="formato_fecha_nacimiento">%1$02d/%2$02d/%3$04d</string>
 
-    <!-- Selector de Altura -->
+
+    <!-- ==================== SELECTOR DE ALTURA ==================== -->
     <string name="titulo_dialogo_altura">Altura</string>
     <string name="unidad_cm">cm</string>
     <string name="formato_altura_valor">%1$d cm ›</string>
+
     <string name="desc_disminuir_altura">Disminuir altura</string>
     <string name="desc_aumentar_altura">Aumentar altura</string>
 
-    <!-- Selector de Peso -->
+
+    <!-- ==================== SELECTOR DE PESO ==================== -->
     <string name="titulo_dialogo_peso">Peso</string>
     <string name="tab_peso_kg">kg</string>
     <string name="tab_peso_bluetooth">Bluetooth</string>
@@ -94,40 +116,85 @@
     <string name="desc_disminuir_decimal">Disminuir decimal</string>
     <string name="desc_aumentar_decimal">Aumentar decimal</string>
 
-    <!-- Vista Bluetooth -->
+
+    <!-- ==================== BALANZA BLUETOOTH ==================== -->
     <string name="emoji_balanza">⚖️</string>
     <string name="titulo_balanza_bluetooth">Sincronizar balanza</string>
     <string name="subtitulo_balanza_bluetooth">Enciende tu balanza y súbete para capturar tu peso automáticamente</string>
     <string name="estado_balanza_buscando">Buscando balanza cercana…</string>
+    <string name="peso_capturado">¡Peso capturado: %1$s kg! 🔒</string>
+    <string name="peso_midiendo">Midiendo: %1$s kg…</string>
 
-    <!-- Pantalla Registro Opciones -->
+    <!-- ==================== REGISTRO ==================== -->
     <string name="auth_titulo">¡Casi listo! Únete ahora para\nobtener tu plan personalizado</string>
-    <string name="auth_btn_google">Continuar con Google</string>
-    <string name="auth_btn_email">Continuar con Email</string>
+
+    <string name="auth_btn_google">@string/btn_continuar_google</string>
+    <string name="auth_btn_email">Continuar con Correo</string>
+
     <string name="auth_terminos">Al continuar, aceptas los\n&lt;u&gt;Términos y Condiciones&lt;/u&gt; y la &lt;u&gt;Política de Privacidad&lt;/u&gt;</string>
 
-    <!-- Diálogo de Registro por Correo -->
-    <string name="registro_email_dialog_titulo">Crear cuenta con Email</string>
+    <!-- ==================== REGISTRO POR CORREO ==================== -->
+    <string name="registro_email_dialog_titulo">Crear cuenta con Correo</string>
     <string name="registro_email_dialog_subtitulo">Ingresa tus credenciales para registrar tu perfil</string>
+
     <string name="hint_correo">Correo electrónico</string>
     <string name="hint_password">Contraseña</string>
+
     <string name="btn_cancelar">Cancelar</string>
     <string name="btn_registrarse">Registrarse</string>
 
-    <!-- Validaciones y Mensajes -->
+
+    <!-- ==================== VALIDACIONES Y MENSAJES ==================== -->
     <string name="error_correo_requerido">Ingresa tu correo</string>
     <string name="error_password_longitud">La contraseña debe tener al menos %1$d caracteres</string>
+
     <string name="registro_exito_formato">Cuenta creada: %1$s\nPeso: %2$.1f kg | Meta: %3$s</string>
     <string name="registro_error_formato">Error: %1$s</string>
 
-    <string name="titulo_login_email">Iniciar sesión</string>
-    <string name="subtitulo_login_email">Ingresa tus credenciales para acceder</string>
+    <string name="error_firebase">Error Firebase: %1$s</string>
 
-    <string name="titulo_iniciar_sesion_correo">Ingresar con Correo</string>
-    <string name="btn_iniciar_sesion">Iniciar sesión</string>
+    <string name="error_autenticacion_google">Fallo al autenticar: código %1$d</string>
+    <string name="error_token_google_nulo">Error: Token de Google nulo</string>
+    <string name="registro_google_exito">¡Bienvenido %1$s!\nEmail: %2$s\nPeso: %3$.1f kg | Meta: %4$s</string>
 
-    <string name="error_password_requerida">Ingresa tu contraseña</string>
-    <string name="error_credenciales_invalidas">Correo o contraseña incorrectos</string>
     <string name="login_exito_formato">Bienvenido: %1$s</string>
     <string name="error_login_formato">Error: %1$s</string>
+    <string name="error_google_formato">Fallo Google: %1$d</string>
+
+    <string name="error_escaner_ble_no_disponible">No se pudo acceder al escáner Bluetooth LE</string>
+    <string name="error_bluetooth">Enciende el Bluetooth del teléfono</string>
+
+    <string name="error_escaneo">Error al escanear: %1$s</string>
+
+
+    <!-- ==================== LOGIN ==================== -->
+    <string name="error_password_requerida">Ingresa tu contraseña</string>
+    <string name="error_credenciales_invalidas">Correo o contraseña incorrectos</string>
+
+    <string name="inicio_sesion_cancelado">Inicio de sesión cancelado</string>
+
+
+    <!-- Añadir dentro de <resources> en res/values/strings.xml -->
+    <string name="campo_actividad">Actividad</string>
+    <string name="emoji_campo_actividad">🏃</string>
+    <string name="titulo_dialogo_actividad">Nivel de actividad física</string>
+    <string name="subtitulo_dialogo_actividad">Selecciona tu nivel de movimiento habitual</string>
+    <string name="actividad_sedentario">Sedentario</string>
+    <string name="actividad_ligero">Ligeramente activo</string>
+    <string name="actividad_moderado">Moderadamente activo</string>
+    <string name="actividad_muy_activo">Muy activo</string>
+    <string name="actividad_extremo">Extremadamente activo</string>
+    <string name="actividad_opcion_sedentario">Sedentario — Poco o ningún ejercicio</string>
+    <string name="actividad_opcion_ligero">Ligeramente activo — 1 a 3 días de ejercicio semanal</string>
+    <string name="actividad_opcion_moderado">Moderadamente activo — 3 a 5 días de ejercicio semanal</string>
+    <string name="actividad_opcion_muy_activo">Muy activo — 6 a 7 días de ejercicio semanal</string>
+    <string name="actividad_opcion_extremo">Extremadamente activo — Actividad física muy exigente</string>
+    <!-- REGISTRO DEL PERFIL NUTRICIONAL -->
+    <string name="perfil_guardado_exito">¡Registro completado! Tu perfil nutricional se guardó correctamente.</string>
+
+    <string name="perfil_ya_existia">Esta cuenta ya tiene un perfil nutricional. Se conservaron sus datos.</string>
+
+    <string name="error_guardar_perfil">La cuenta se autenticó, pero no se pudo guardar el perfil. Vuelve a intentar con Google.</string>
+
+    <string name="error_usuario_firebase">No se pudo identificar al usuario de Firebase.</string>
 </resources>

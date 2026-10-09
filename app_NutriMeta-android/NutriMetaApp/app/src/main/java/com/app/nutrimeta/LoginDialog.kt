@@ -34,25 +34,54 @@ class LoginDialog : PadreDialog() {
 
                 auth.signInWithCredential(credencial)
                     .addOnCompleteListener(requireActivity()) { authTask ->
+
                         if (authTask.isSuccessful) {
-                            val usuario = auth.currentUser
-                            Toast.makeText(
-                                requireContext(),
-                                "Bienvenido: ${usuario?.displayName ?: usuario?.email}",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            dismiss()
-                            // TODO: Intent a HomeActivity
+
+                            val usuario = authTask.result?.user
+                            val contexto = context ?: return@addOnCompleteListener
+
+                            if (usuario != null) {
+
+                                // Abrir y preparar SQLite del usuario autenticado
+                                BaseDatosInicializador.iniciar(
+                                    contexto.applicationContext,
+                                    usuario.uid
+                                )
+
+                                // Mostrar mensaje de bienvenida
+                                Toast.makeText(
+                                    contexto,
+                                    contexto.getString(
+                                        R.string.login_exito_formato,
+                                        usuario.displayName
+                                            ?: usuario.email.orEmpty()
+                                    ),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                dismiss()
+                            }
+
                         } else {
+
+                            val contexto = context ?: return@addOnCompleteListener
+
                             Toast.makeText(
-                                requireContext(),
-                                "Error: ${authTask.exception?.localizedMessage}",
+                                contexto,
+                                contexto.getString(
+                                    R.string.error_login_formato,
+                                    authTask.exception?.localizedMessage.orEmpty()
+                                ),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
-            } catch (e: ApiException) {
-                Toast.makeText(requireContext(), "Fallo Google: ${e.statusCode}", Toast.LENGTH_SHORT).show()
+                } catch (e: ApiException) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.error_google_formato, e.statusCode),
+                        Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -74,14 +103,14 @@ class LoginDialog : PadreDialog() {
         val btnGoogle = viewHijo.findViewById<MaterialButton>(R.id.btnGoogle)
         val btnCorreo = viewHijo.findViewById<MaterialButton>(R.id.btnCorreo)
 
-        // 1. Botón Google: Cierra sesión previa para FORZAR a que siempre muestre el selector de cuentas
+        // Boton Google: Cierra sesion previa para forzar a que siempre muestre el selector de cuentas
         btnGoogle.setOnClickListener {
             googleSignInClient.signOut().addOnCompleteListener {
                 googleLauncher.launch(googleSignInClient.signInIntent)
             }
         }
 
-        // 2. Botón Correo: Cierra LoginDialog y abre tu EmailDialog en modo login
+        // Boton Correo: Cierra LoginDialog y abre tu EmailDialog en modo login
         btnCorreo.setOnClickListener {
             dismiss()
             EmailDialog.newInstanceLogin().show(parentFragmentManager, "EmailDialog")

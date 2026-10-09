@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         linkIniciarSesion.setOnClickListener {
             LoginDialog().show(supportFragmentManager, "LoginDialog")
         }
-        //////
 
         indicators = listOf(
             findViewById(R.id.indicador1),

@@ -24,6 +24,7 @@
             android:background="@drawable/fondo_toggle_activo"
             android:clickable="true"
             android:focusable="true"
+            android:minHeight="@dimen/dp_48"
             android:paddingHorizontal="@dimen/dp_28"
             android:paddingVertical="@dimen/dp_8"
             android:text="@string/tab_peso_kg"
@@ -39,6 +40,7 @@
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
+            android:minHeight="@dimen/dp_48"
             android:paddingHorizontal="@dimen/dp_20"
             android:paddingVertical="@dimen/dp_8"
             android:text="@string/tab_peso_bluetooth"
@@ -47,7 +49,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- ================= CONTENEDOR MODO MANUAL (STEPPERS) ================= -->
     <LinearLayout
         android:id="@+id/layoutModoManual"
         android:layout_width="wrap_content"
@@ -57,11 +58,10 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <!-- PARTE ENTERA: [ - ] [ 70 ] [ + ] -->
         <ImageView
             android:id="@+id/btnRestarPesoEntero"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
             android:background="@drawable/fondo_boton_stepper"
             android:clickable="true"
             android:contentDescription="@string/desc_disminuir_peso"
@@ -76,15 +76,14 @@
             android:layout_marginHorizontal="@dimen/dp_8"
             android:background="@drawable/fondo_numero_stepper"
             android:gravity="center"
-            android:text="70"
             android:textColor="@color/blanco"
             android:textSize="@dimen/sp_18"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btnSumarPesoEntero"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
             android:background="@drawable/fondo_boton_stepper"
             android:clickable="true"
             android:contentDescription="@string/desc_aumentar_peso"
@@ -92,7 +91,6 @@
             android:padding="@dimen/dp_8"
             android:src="@drawable/ic_plus" />
 
-        <!-- PUNTO DECIMAL -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,11 +100,10 @@
             android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
-        <!-- PARTE DECIMAL: [ - ] [ 0 ] [ + ] -->
         <ImageView
             android:id="@+id/btnRestarPesoDecimal"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
             android:background="@drawable/fondo_boton_stepper"
             android:clickable="true"
             android:contentDescription="@string/desc_disminuir_decimal"
@@ -121,15 +118,14 @@
             android:layout_marginHorizontal="@dimen/dp_8"
             android:background="@drawable/fondo_numero_stepper"
             android:gravity="center"
-            android:text="0"
             android:textColor="@color/blanco"
             android:textSize="@dimen/sp_18"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btnSumarPesoDecimal"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
             android:background="@drawable/fondo_boton_stepper"
             android:clickable="true"
             android:contentDescription="@string/desc_aumentar_decimal"
@@ -142,13 +138,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_10"
+            android:importantForAccessibility="no"
             android:text="@string/tab_peso_kg"
             android:textColor="@color/blanco"
             android:textSize="@dimen/sp_16"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- ================= CONTENEDOR MODO BLUETOOTH ================= -->
     <LinearLayout
         android:id="@+id/layoutModoBluetooth"
         android:layout_width="match_parent"

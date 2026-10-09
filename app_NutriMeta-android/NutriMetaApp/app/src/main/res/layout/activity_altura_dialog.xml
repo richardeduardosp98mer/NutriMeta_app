@@ -32,7 +32,6 @@
             android:layout_marginHorizontal="@dimen/dp_12"
             android:background="@drawable/fondo_numero_stepper"
             android:gravity="center"
-            android:text="170"
             android:textColor="@color/blanco"
             android:textSize="@dimen/sp_18"
             android:textStyle="bold" />

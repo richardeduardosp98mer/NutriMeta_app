@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/colors">
 
-    <!-- Botón Retroceso (Volver) -->
     <ImageView
         android:id="@+id/btnVolver"
         android:layout_width="@dimen/dp_48"
@@ -22,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/blanco" />
 
-    <!-- Contenedor central (Aura concéntrica + Textos) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,25 +33,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45">
 
-        <!-- Núcleo metabólico con auras concéntricas -->
         <FrameLayout
             android:layout_width="@dimen/dp_240"
             android:layout_height="@dimen/dp_240">
 
-            <!-- Capa externa -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/anillo_exterior" />
 
-            <!-- Capa media -->
             <View
                 android:layout_width="@dimen/dp_170"
                 android:layout_height="@dimen/dp_170"
                 android:layout_gravity="center"
                 android:background="@drawable/anillo_medio" />
 
-            <!-- Disco central con borde -->
             <FrameLayout
                 android:layout_width="@dimen/dp_100"
                 android:layout_height="@dimen/dp_100"
@@ -70,7 +64,6 @@
             </FrameLayout>
         </FrameLayout>
 
-        <!-- Badge de Contexto -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +77,6 @@
             android:textSize="@dimen/sp_11"
             android:textStyle="bold" />
 
-        <!-- Título -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +87,6 @@
             android:textSize="@dimen/sp_24"
             android:textStyle="bold" />
 
-        <!-- Subtítulo -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +97,6 @@
             android:textSize="@dimen/sp_14" />
     </LinearLayout>
 
-    <!-- Botón Continuar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnContinuar"
         android:layout_width="match_parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/auth_background"
-    android:padding="24dp"
+    android:padding="@dimen/dp_24"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".RegistroActivity">
 
@@ -23,38 +23,38 @@
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="@dimen/dp_40"
             android:gravity="center"
-            android:lineSpacingExtra="4dp"
+            android:lineSpacingExtra="@dimen/dp_4"
             android:text="@string/auth_titulo"
             android:textColor="@color/auth_btn_google_bg"
-            android:textSize="24sp"
+            android:textSize="@dimen/sp_24"
             android:textStyle="bold" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGoogle"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginBottom="@dimen/dp_16"
             android:text="@string/auth_btn_google"
             android:textAllCaps="false"
             android:textColor="@color/auth_btn_google_text"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             android:textStyle="bold"
             app:backgroundTint="@color/auth_btn_google_bg"
-            app:cornerRadius="28dp" />
+            app:cornerRadius="@dimen/dp_28" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEmail"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/dp_56"
             android:text="@string/auth_btn_email"
             android:textAllCaps="false"
             android:textColor="@color/auth_btn_email_text"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             android:textStyle="bold"
             app:backgroundTint="@color/auth_btn_email_bg"
-            app:cornerRadius="28dp" />
+            app:cornerRadius="@dimen/dp_28" />
 
     </LinearLayout>
 
@@ -62,12 +62,12 @@
         android:id="@+id/tvTerminos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/dp_16"
         android:gravity="center"
-        android:lineSpacingExtra="3dp"
+        android:lineSpacingExtra="@dimen/dp_3"
         android:text="@string/auth_terminos"
         android:textColor="@color/auth_texto_terminos"
-        android:textSize="12sp"
+        android:textSize="@dimen/sp_12"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

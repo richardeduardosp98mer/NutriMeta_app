@@ -1,69 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal"
     tools:context=".EdadDialog">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <!-- Etiqueta del campo -->
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="@string/campo_fecha_nacimiento"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/btnRestarEdad"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
-            android:background="@drawable/fondo_boton_stepper"
-            android:clickable="true"
-            android:contentDescription="@string/desc_disminuir_edad"
-            android:focusable="true"
-            android:padding="@dimen/dp_8"
-            android:src="@drawable/ic_minus" />
+    <!-- Campo que abre el calendario -->
+    <TextView
+        android:id="@+id/tvValorEdadDialog"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:background="@drawable/fondo_numero_stepper"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:text="@string/accion_seleccionar"
+        android:textColor="@color/blanco"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvValorEdadDialog"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_40"
-            android:layout_marginHorizontal="@dimen/dp_12"
-            android:background="@drawable/fondo_numero_stepper"
-            android:gravity="center"
-            android:text="25"
-            android:textColor="@color/blanco"
-            android:textSize="@dimen/sp_18"
-            android:textStyle="bold" />
+    <!-- Texto de ayuda -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="center"
+        android:text="@string/ayuda_fecha_nacimiento"
+        android:textColor="@color/color_subtitulo_objetivo"
+        android:textSize="@dimen/sp_13" />
 
-        <ImageView
-            android:id="@+id/btnSumarEdad"
-            android:layout_width="@dimen/dp_36"
-            android:layout_height="@dimen/dp_36"
-            android:background="@drawable/fondo_boton_stepper"
-            android:clickable="true"
-            android:contentDescription="@string/desc_aumentar_edad"
-            android:focusable="true"
-            android:padding="@dimen/dp_8"
-            android:src="@drawable/ic_plus" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_14"
-            android:text="@string/unidad_anos"
-            android:textColor="@color/blanco"
-            android:textSize="@dimen/sp_16"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- Boton Guardar -->
+    <!-- Botón Guardar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGuardarEdad"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_54"
         android:layout_marginTop="@dimen/dp_24"
+        android:enabled="false"
         android:text="@string/btn_guardar"
         android:textAllCaps="false"
         android:textColor="@color/colors"
