@@ -1,9 +1,9 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.ui.dialogs
 
 import android.app.DatePickerDialog
 import android.view.View
 import android.widget.TextView
+import com.app.nutrimeta.R
 import com.google.android.material.button.MaterialButton
 import java.util.Calendar
 import java.util.Locale
@@ -94,7 +94,7 @@ class EdadDialog(
             val fecha = fechaSeleccionada
                 ?: return@setOnClickListener
 
-            val fechaISO = String.format(
+            val fechaISO = String.Companion.format(
                 Locale.US,
                 "%04d-%02d-%02d",
                 fecha.get(Calendar.YEAR),

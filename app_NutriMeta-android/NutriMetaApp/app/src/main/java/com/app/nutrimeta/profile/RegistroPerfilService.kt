@@ -1,11 +1,11 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.profile
 
 import android.content.ContentValues
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
 import com.app.nutrimeta.domain.CalculadoraMetas
 import com.app.nutrimeta.domain.CalculadoraNutricional
 import com.app.nutrimeta.domain.DatosCalculo
@@ -103,7 +103,7 @@ object RegistroPerfilService {
         val codigoActividad =
             datos.actividad.trim().uppercase(Locale.ROOT)
 
-        NutriMetaDatabaseHelper.forUser(
+        NutriMetaDatabaseHelper.Companion.forUser(
             context,
             uid
         ).use { helper ->

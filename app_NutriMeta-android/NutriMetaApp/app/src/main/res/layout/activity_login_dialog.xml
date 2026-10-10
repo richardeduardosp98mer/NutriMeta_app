@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LoginDialog">
+    tools:context=".auth.LoginDialog">
 
     <!-- Botón Continuar con Google -->
     <com.google.android.material.button.MaterialButton

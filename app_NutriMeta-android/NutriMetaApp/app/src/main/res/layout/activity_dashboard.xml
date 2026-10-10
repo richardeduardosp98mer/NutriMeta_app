@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootDashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/nm_fondo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nm_titulo"
+                        android:textColor="@color/nm_texto"
+                        android:textSize="@dimen/sp_28"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nm_subtitulo"
+                        android:textColor="@color/nm_secundario"
+                        android:textSize="@dimen/sp_14"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvAvatarDashboard"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:gravity="center"
+                    android:background="@drawable/fondo_avatar_nutrimeta"
+                    android:text="@string/nm_avatar_defecto"
+                    android:textColor="@color/nm_fondo"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_20"
+                    android:contentDescription="@string/nm_abrir_perfil"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvFechaDashboard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/nm_fecha"
+                    android:textColor="@color/nm_texto"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold"/>
+
+                <ImageButton
+                    android:id="@+id/btnSemanaAnterior"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/fondo_boton_calendario"
+                    android:src="@drawable/ic_flecha_izquierda"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@string/nm_semana_anterior"/>
+
+                <ImageButton
+                    android:id="@+id/btnSemanaSiguiente"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:background="@drawable/fondo_boton_calendario"
+                    android:src="@drawable/ic_flecha_derecha"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@string/nm_semana_siguiente"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contenedorSemana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="horizontal"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                app:cardBackgroundColor="@color/nm_tarjeta"
+                app:cardCornerRadius="@dimen/dp_24"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_20">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nm_resumen"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold"
+                        android:textColor="@color/nm_texto"/>
+
+                    <TextView
+                        android:id="@+id/tvObjetivoDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/dashboard_cargando"
+                        android:textColor="@color/nm_secundario"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:text="@string/nm_consumidas"
+                        android:textColor="@color/nm_secundario"/>
+
+                    <TextView
+                        android:id="@+id/tvCaloriasDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nm_sin_valor"
+                        android:textSize="@dimen/sp_28"
+                        android:textStyle="bold"
+                        android:textColor="@color/nm_texto"/>
+
+                    <ProgressBar
+                        android:id="@+id/progresoCaloriasDashboard"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/nm_acento"
+                        android:progressBackgroundTint="@color/nm_pista"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:text="@string/nm_macros"
+                        android:textColor="@color/nm_texto"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/sp_18"/>
+
+                    <TextView
+                        android:id="@+id/tvProteinasDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/nm_proteinas"
+                        android:textColor="@color/nm_texto"/>
+
+                    <ProgressBar
+                        android:id="@+id/progresoProteinasDashboard"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:max="100"
+                        android:progressTint="@color/nm_proteinas"
+                        android:progressBackgroundTint="@color/nm_pista"/>
+
+                    <TextView
+                        android:id="@+id/tvCarbohidratosDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/nm_carbohidratos"
+                        android:textColor="@color/nm_texto"/>
+
+                    <ProgressBar
+                        android:id="@+id/progresoCarbohidratosDashboard"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:max="100"
+                        android:progressTint="@color/nm_carbohidratos"
+                        android:progressBackgroundTint="@color/nm_pista"/>
+
+                    <TextView
+                        android:id="@+id/tvGrasasDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/nm_grasas"
+                        android:textColor="@color/nm_texto"/>
+
+                    <ProgressBar
+                        android:id="@+id/progresoGrasasDashboard"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_8"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:max="100"
+                        android:progressTint="@color/nm_grasas"
+                        android:progressBackgroundTint="@color/nm_pista"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:text="@string/nm_comidas"
+                android:textSize="@dimen/sp_22"
+                android:textStyle="bold"
+                android:textColor="@color/nm_texto"/>
+
+            <include
+                android:id="@+id/comidaDesayuno"
+                layout="@layout/item_comida_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"/>
+
+            <include
+                android:id="@+id/comidaAlmuerzo"
+                layout="@layout/item_comida_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"/>
+
+            <include
+                android:id="@+id/comidaCena"
+                layout="@layout/item_comida_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"/>
+
+            <include
+                android:id="@+id/comidaSnack"
+                layout="@layout/item_comida_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                app:cardBackgroundColor="@color/nm_tarjeta"
+                app:cardCornerRadius="@dimen/dp_24"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_20">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nm_actividad"
+                        android:textColor="@color/nm_texto"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/sp_20"/>
+
+                    <TextView
+                        android:id="@+id/tvActividadDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:text="@string/dashboard_cargando"
+                        android:textColor="@color/nm_texto"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/nm_actividad_ayuda"
+                        android:textColor="@color/nm_secundario"
+                        android:textSize="@dimen/sp_14"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvEstadoDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/dashboard_cargando"
+                android:textColor="@color/nm_secundario"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,5 +1,4 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.auth
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,6 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.app.nutrimeta.profile.DatosRegistroPerfil
+import com.app.nutrimeta.Navegacion
+import com.app.nutrimeta.R
+import com.app.nutrimeta.profile.RegistroPerfilService
+import com.app.nutrimeta.data.local.BaseDatosInicializador
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -228,7 +232,8 @@ class EmailDialog : DialogFragment() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        dismiss()
+                        //navegacion
+                        Navegacion.abrirDashboard(requireActivity())
 
                     } else {
 
@@ -311,8 +316,8 @@ class EmailDialog : DialogFragment() {
                                         mensaje,
                                         Toast.LENGTH_LONG
                                     ).show()
-
-                                    dismiss()
+                                    //navegacion
+                                    Navegacion.abrirDashboard(requireActivity())
                                 },
 
                                 onFailure = {

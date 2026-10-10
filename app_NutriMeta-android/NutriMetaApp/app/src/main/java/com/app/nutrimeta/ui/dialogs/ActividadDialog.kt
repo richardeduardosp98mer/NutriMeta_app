@@ -1,4 +1,4 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.ui.dialogs
 
 import android.app.Dialog
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.RadioGroup
 import androidx.fragment.app.DialogFragment
+import com.app.nutrimeta.R
 import com.google.android.material.button.MaterialButton
 
 class ActividadDialog : DialogFragment() {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/nm_tarjeta"
+    app:cardCornerRadius="@dimen/dp_24"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_20"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTituloComida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nm_desayuno"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            android:textColor="@color/nm_texto"/>
+
+        <TextView
+            android:id="@+id/tvResumenComida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="@string/nm_comida_vacia"
+            android:textColor="@color/nm_secundario"
+            android:textSize="@dimen/sp_14"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAgregarComida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/nm_agregar"
+            android:textColor="@color/nm_texto"
+            app:backgroundTint="@color/nm_boton"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

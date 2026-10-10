@@ -197,4 +197,101 @@
     <string name="error_guardar_perfil">La cuenta se autenticó, pero no se pudo guardar el perfil. Vuelve a intentar con Google.</string>
 
     <string name="error_usuario_firebase">No se pudo identificar al usuario de Firebase.</string>
+
+
+    <!-- DASHBOARD -->
+    <string name="dashboard_titulo">Tus metas nutricionales</string>
+    <string name="dashboard_etiqueta_objetivo">Tu objetivo</string>
+
+    <string name="dashboard_objetivo_bajar">Perder grasa</string>
+    <string name="dashboard_objetivo_mantener">Mantener peso</string>
+    <string name="dashboard_objetivo_subir">Ganar músculo</string>
+
+    <string name="dashboard_calorias_titulo">Calorías diarias</string>
+    <string name="dashboard_proteinas_titulo">Proteínas</string>
+    <string name="dashboard_grasas_titulo">Grasas</string>
+    <string name="dashboard_carbohidratos_titulo">Carbohidratos</string>
+
+    <string name="dashboard_calorias_formato">Calorías diarias: %1$.0f kcal</string>
+    <string name="dashboard_proteinas_formato">Proteínas: %1$.1f g</string>
+    <string name="dashboard_grasas_formato">Grasas: %1$.1f g</string>
+    <string name="dashboard_carbohidratos_formato">Carbohidratos: %1$.1f g</string>
+
+    <string name="dashboard_cargando">Cargando tu perfil...</string>
+    <string name="dashboard_sin_perfil">Tu cuenta todavía no tiene un perfil nutricional guardado.</string>
+    <string name="dashboard_error_carga">No se pudo cargar el perfil nutricional.</string>
+    <string name="dashboard_cerrar_sesion">Cerrar sesión</string>
+
+
+    <!-- DASHBOARD NUTRIMETA -->
+    <string name="nm_titulo">NutriMeta</string>
+    <string name="nm_subtitulo">Tu progreso, a tu ritmo</string>
+    <string name="nm_fecha">Hoy</string>
+    <string name="nm_anterior">‹</string>
+    <string name="nm_siguiente">›</string>
+
+    <string name="nm_resumen">Resumen diario</string>
+    <string name="nm_consumidas">Calorías consumidas / meta</string>
+    <string name="nm_macros">Macronutrientes</string>
+    <string name="nm_sin_valor">—</string>
+
+    <string name="nm_proteinas">Proteínas</string>
+    <string name="nm_carbohidratos">Carbohidratos</string>
+    <string name="nm_grasas">Grasas</string>
+
+    <string name="nm_calorias_formato">%1$.0f / %2$.0f kcal</string>
+    <string name="nm_macro_proteinas_formato">Proteínas: %1$.1f / %2$.1f g</string>
+    <string name="nm_macro_grasas_formato">Grasas: %1$.1f / %2$.1f g</string>
+    <string name="nm_macro_carbohidratos_formato">Carbohidratos: %1$.1f / %2$.1f g</string>
+
+    <string name="nm_comidas">Mis comidas</string>
+    <string name="nm_desayuno">Desayuno</string>
+    <string name="nm_almuerzo">Almuerzo</string>
+    <string name="nm_cena">Cena</string>
+    <string name="nm_snack">Snacks</string>
+    <string name="nm_comida_vacia">0 kcal · 0 P | 0 C | 0 G</string>
+    <string name="nm_resumen_comida_formato">%1$.0f kcal · %2$.1f P | %3$.1f C | %4$.1f G</string>
+    <string name="nm_agregar">+ Agregar alimento</string>
+    <string name="nm_registro_pendiente">Próximamente podrás registrar alimentos en %1$s</string>
+
+    <string name="nm_actividad">Mi actividad física</string>
+    <string name="nm_actividad_formato">%1$s · Factor %2$.3f</string>
+    <string name="nm_actividad_ayuda">Este nivel de actividad ya está incluido en tu meta calórica. En Perfil podras modificarla</string>
+    <string name="nm_semana_anterior">Semana anterior</string>
+    <string name="nm_semana_siguiente">Semana siguiente</string>
+
+    <string-array name="nm_dias_semana">
+        <item>L</item>
+        <item>M</item>
+        <item>M</item>
+        <item>J</item>
+        <item>V</item>
+        <item>S</item>
+        <item>D</item>
+    </string-array>
+
+
+    <!-- PERFIL NUTRIMETA -->
+    <string name="nm_avatar_defecto">\?</string>
+    <string name="nm_abrir_perfil">Abrir mi perfil</string>
+
+    <string name="perfil_titulo">Mi perfil</string>
+    <string name="perfil_usuario">Usuario NutriMeta</string>
+    <string name="perfil_datos_titulo">Mis datos personales</string>
+
+    <string name="perfil_fecha_formato">Fecha de nacimiento: %1$s</string>
+    <string name="perfil_edad_formato">Edad: %1$d años</string>
+    <string name="perfil_edad_no_disponible">Edad no disponible</string>
+    <string name="perfil_peso_formato">Peso: %1$.1f kg</string>
+    <string name="perfil_objetivo_formato">Objetivo: %1$s</string>
+    <string name="perfil_actividad_formato">Actividad física: %1$s (factor %2$.3f)</string>
+    <string name="perfil_editar_objetivo">Cambiar objetivo nutricional</string>
+    <string name="perfil_cancelar">Cancelar</string>
+    <string name="perfil_actualizado">Perfil actualizado y metas recalculadas</string>
+    <string name="perfil_error_actualizar">No se pudieron guardar los cambios del perfil</string>
+    <string name="perfil_volver">Volver al inicio</string>
+    <string name="perfil_editar_indicador">✎ Editar ›</string>
+    <string name="perfil_guardando_cambios">Guardando cambios...</string>
+
+
 </resources>

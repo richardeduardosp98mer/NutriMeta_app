@@ -8,10 +8,12 @@
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_17">17sp</dimen>
     <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_19">19sp</dimen>
     <dimen name="sp_20">20sp</dimen>
     <dimen name="sp_22">22sp</dimen>
     <dimen name="sp_24">24sp</dimen>
     <dimen name="sp_26">26sp</dimen>
+    <dimen name="sp_28">28sp</dimen>
     <dimen name="sp_40">40sp</dimen>
 
     <!--para tamaño-->

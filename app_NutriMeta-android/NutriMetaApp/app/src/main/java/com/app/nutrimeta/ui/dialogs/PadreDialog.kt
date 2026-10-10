@@ -1,4 +1,4 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.ui.dialogs
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.DialogFragment
+import com.app.nutrimeta.R
 
 abstract class PadreDialog : DialogFragment() {
 
@@ -55,7 +55,7 @@ abstract class PadreDialog : DialogFragment() {
         super.onStart()
         dialog?.window?.let { window ->
             window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            window.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
 }

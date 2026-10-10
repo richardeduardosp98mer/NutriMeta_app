@@ -1,5 +1,4 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.auth
 
 import android.os.Bundle
 import android.widget.TextView
@@ -7,6 +6,10 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import com.app.nutrimeta.profile.DatosRegistroPerfil
+import com.app.nutrimeta.Navegacion
+import com.app.nutrimeta.R
+import com.app.nutrimeta.profile.RegistroPerfilService
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -213,6 +216,8 @@ class RegistroActivity : AppCompatActivity() {
                                 mensaje,
                                 Toast.LENGTH_LONG
                             ).show()
+                            //navegacion
+                            Navegacion.abrirDashboard(this@RegistroActivity)
                         },
 
                         onFailure = {

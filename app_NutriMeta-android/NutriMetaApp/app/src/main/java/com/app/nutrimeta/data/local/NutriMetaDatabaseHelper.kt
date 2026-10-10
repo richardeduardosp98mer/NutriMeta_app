@@ -1,4 +1,4 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.data.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

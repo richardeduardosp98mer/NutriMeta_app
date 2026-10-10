@@ -1,5 +1,4 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.onboarding
 
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -8,6 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.app.nutrimeta.ui.dialogs.ActividadDialog
+import com.app.nutrimeta.ui.dialogs.AlturaDialog
+import com.app.nutrimeta.ui.dialogs.EdadDialog
+import com.app.nutrimeta.ui.dialogs.PesoDialog
+import com.app.nutrimeta.R
+import com.app.nutrimeta.ui.dialogs.SexoDialog
+import com.app.nutrimeta.auth.RegistroActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 
@@ -86,12 +92,12 @@ class SobreUsuarioActivity : AppCompatActivity() {
 
         // RESULTADO DEL DIÁLOGO DE ACTIVIDAD FÍSICA
         supportFragmentManager.setFragmentResultListener(
-            ActividadDialog.REQUEST_KEY,
+            ActividadDialog.Companion.REQUEST_KEY,
             this
         ) { _, resultado ->
 
             actividadSeleccionada = resultado.getString(
-                ActividadDialog.RESULT_KEY
+                ActividadDialog.Companion.RESULT_KEY
             )
 
             actualizarValores()
@@ -192,7 +198,7 @@ class SobreUsuarioActivity : AppCompatActivity() {
             R.id.cardActividad
         ).setOnClickListener {
 
-            ActividadDialog.nuevaInstancia(
+            ActividadDialog.Companion.nuevaInstancia(
                 actividadSeleccionada
             ).show(
                 supportFragmentManager,
@@ -303,19 +309,19 @@ class SobreUsuarioActivity : AppCompatActivity() {
 
             val textoRes = when (valor) {
 
-                ActividadDialog.SEDENTARIO ->
+                ActividadDialog.Companion.SEDENTARIO ->
                     R.string.actividad_sedentario
 
-                ActividadDialog.LIGERO ->
+                ActividadDialog.Companion.LIGERO ->
                     R.string.actividad_ligero
 
-                ActividadDialog.MODERADO ->
+                ActividadDialog.Companion.MODERADO ->
                     R.string.actividad_moderado
 
-                ActividadDialog.MUY_ACTIVO ->
+                ActividadDialog.Companion.MUY_ACTIVO ->
                     R.string.actividad_muy_activo
 
-                ActividadDialog.EXTREMO ->
+                ActividadDialog.Companion.EXTREMO ->
                     R.string.actividad_extremo
 
                 else ->

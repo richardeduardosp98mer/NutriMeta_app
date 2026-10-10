@@ -1,5 +1,4 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.bluetooth
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
@@ -11,6 +10,7 @@ import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import com.app.nutrimeta.R
 
 class BalanzaBleManager(context: Context) {
 

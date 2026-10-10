@@ -1,5 +1,4 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.ui.dialogs
 
 import android.Manifest
 import android.content.DialogInterface
@@ -13,6 +12,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.app.nutrimeta.R
+import com.app.nutrimeta.bluetooth.BalanzaBleManager
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -154,7 +155,7 @@ class PesoDialog(
                     return@post
                 }
 
-                val pesoFormateado = String.format(
+                val pesoFormateado = String.Companion.format(
                     Locale.getDefault(),
                     "%.1f",
                     peso

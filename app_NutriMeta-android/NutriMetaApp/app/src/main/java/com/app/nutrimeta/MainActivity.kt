@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.app.nutrimeta.auth.LoginDialog
+import com.app.nutrimeta.onboarding.ObjetivoActivity
 import kotlin.math.abs
-
+import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var indicators: List<View>
@@ -93,4 +95,20 @@ class MainActivity : AppCompatActivity() {
             view.layoutParams = layoutParams
         }
     }
+
+
+    override fun onStart() {
+        super.onStart()
+
+        // Verificar si Firebase conserva una sesión activa.
+        val usuario = FirebaseAuth.getInstance().currentUser
+
+        if (usuario != null) {
+
+            // El usuario ya inició sesión anteriormente.
+            // No necesita volver a registrarse ni iniciar sesión.
+            Navegacion.abrirDashboard(this)
+        }
+    }
+
 }

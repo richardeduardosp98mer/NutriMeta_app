@@ -10,7 +10,7 @@
     app:strokeColor="@color/borde_tarjeta_objetivo"
     app:strokeWidth="@dimen/dp_1"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".PadreDialog">
+    tools:context=".ui.dialogs.PadreDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

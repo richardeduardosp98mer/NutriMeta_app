@@ -1,11 +1,10 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.onboarding
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.app.nutrimeta.onboarding.CalculoCaloriasActivity
+import com.app.nutrimeta.R
 import com.google.android.material.card.MaterialCardView
 
 class ObjetivoActivity : AppCompatActivity() {

@@ -62,4 +62,17 @@
     <color name="input_stroke_inactive">#66FFFFFF</color>
     <color name="input_hint">#AAAAAA</color>
 
+
+    <color name="nm_fondo">#100D17</color>
+    <color name="nm_tarjeta">#211C2C</color>
+    <color name="nm_boton">#383044</color>
+    <color name="nm_texto">#FFFFFF</color>
+    <color name="nm_secundario">#B6AEC5</color>
+    <color name="nm_acento">#C5A3FF</color>
+    <color name="nm_pista">#41394D</color>
+    <color name="nm_proteinas">#AF93FF</color>
+    <color name="nm_carbohidratos">#F2C56B</color>
+    <color name="nm_grasas">#8BD5C7</color>
+
+
 </resources>

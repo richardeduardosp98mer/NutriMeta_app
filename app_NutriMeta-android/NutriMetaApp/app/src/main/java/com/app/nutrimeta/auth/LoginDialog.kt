@@ -1,10 +1,15 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.auth
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.app.nutrimeta.auth.EmailDialog
+import com.app.nutrimeta.Navegacion
+import com.app.nutrimeta.ui.dialogs.PadreDialog
+import com.app.nutrimeta.R
+import com.app.nutrimeta.data.local.BaseDatosInicializador
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -59,7 +64,8 @@ class LoginDialog : PadreDialog() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                dismiss()
+                                //navegacion
+                                Navegacion.abrirDashboard(requireActivity())
                             }
 
                         } else {
@@ -113,7 +119,7 @@ class LoginDialog : PadreDialog() {
         // Boton Correo: Cierra LoginDialog y abre tu EmailDialog en modo login
         btnCorreo.setOnClickListener {
             dismiss()
-            EmailDialog.newInstanceLogin().show(parentFragmentManager, "EmailDialog")
+            EmailDialog.Companion.newInstanceLogin().show(parentFragmentManager, "EmailDialog")
         }
     }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permisos Bluetooth para Android 12+ -->
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
@@ -13,6 +12,7 @@
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30" />
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -26,18 +26,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriMeta">
-        <!-- Activities -->
         <activity
-            android:name=".RegistroActivity"
+            android:name=".profile.PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".SobreUsuarioActivity"
+            android:name=".dashboard.DashboardActivity"
+            android:exported="false" /> <!-- Activities -->
+        <activity
+            android:name=".auth.RegistroActivity"
             android:exported="false" />
         <activity
-            android:name=".CalculoCaloriasActivity"
+            android:name=".onboarding.SobreUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".ObjetivoActivity"
+            android:name=".onboarding.CalculoCaloriasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.ObjetivoActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,7 +1,8 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.ui.dialogs
 
 import android.view.View
 import android.widget.ImageView
+import com.app.nutrimeta.R
 import com.google.android.material.card.MaterialCardView
 
 class SexoDialog(

@@ -1,16 +1,8 @@
-
-package com.app.nutrimeta
+package com.app.nutrimeta.data.local
 
 import android.content.Context
 import android.util.Log
-
-/**
- * Prepara la base SQLite correspondiente
- * al UID autenticado de Firebase.
- *
- * También verifica las tablas y los
- * niveles de actividad física.
- */
+import kotlin.math.abs
 object BaseDatosInicializador {
 
     private const val TAG = "NutriMetaDB"
@@ -135,7 +127,7 @@ object BaseDatosInicializador {
                             Log.i(TAG, "Carbohidratos: $carbohidratos g")
                             Log.i(TAG, "Calorías calculadas desde macros: $caloriasMacros")
 
-                            val diferencia = kotlin.math.abs(
+                            val diferencia = abs(
                                 calorias - caloriasMacros
                             )
 

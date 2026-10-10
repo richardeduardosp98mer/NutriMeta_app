@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootPerfil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nm_fondo"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_20">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil_titulo"
+            android:textSize="@dimen/sp_28"
+            android:textStyle="bold"
+            android:textColor="@color/nm_texto"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            app:cardBackgroundColor="@color/nm_tarjeta"
+            app:cardCornerRadius="@dimen/dp_24">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_20"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvAvatarPerfil"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"
+                    android:background="@drawable/fondo_avatar_nutrimeta"
+                    android:gravity="center"
+                    android:text="@string/nm_avatar_defecto"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/nm_fondo"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPerfilNombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perfil_usuario"
+                        android:textColor="@color/nm_texto"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/sp_18"/>
+
+                    <TextView
+                        android:id="@+id/tvPerfilCorreo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:textColor="@color/nm_secundario"
+                        android:textSize="@dimen/sp_14"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:id="@+id/filaEditarEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_16"
+                android:background="@drawable/fondo_fila_perfil"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPerfilEdad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dashboard_cargando"
+                        android:textColor="@color/nm_texto"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvPerfilFecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:text="@string/dashboard_cargando"
+                        android:textColor="@color/nm_secundario"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:text="@string/perfil_editar_indicador"
+                    android:textColor="@color/nm_acento"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/filaEditarPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_16"
+                android:background="@drawable/fondo_fila_perfil"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tvPerfilPeso"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dashboard_cargando"
+                    android:textStyle="bold"
+                    android:textColor="@color/nm_texto"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:text="@string/perfil_editar_indicador"
+                    android:textColor="@color/nm_acento"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/filaEditarObjetivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_16"
+                android:background="@drawable/fondo_fila_perfil"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tvPerfilObjetivo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dashboard_cargando"
+                    android:textStyle="bold"
+                    android:textColor="@color/nm_texto"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:text="@string/perfil_editar_indicador"
+                    android:textColor="@color/nm_acento"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/filaEditarActividad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_16"
+                android:background="@drawable/fondo_fila_perfil"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tvPerfilActividad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/dashboard_cargando"
+                    android:textColor="@color/nm_texto"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:text="@string/perfil_editar_indicador"
+                    android:textColor="@color/nm_acento"/>
+
+            </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/tvEstadoPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/dashboard_cargando"
+            android:textColor="@color/nm_secundario"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVolverPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:text="@string/perfil_volver"
+            android:textColor="@color/nm_texto"
+            app:backgroundTint="@color/nm_boton"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCerrarSesionPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/dashboard_cerrar_sesion"
+            android:textColor="@color/nm_texto"
+            app:backgroundTint="@color/nm_tarjeta"/>
+
+
+    </LinearLayout>
+</ScrollView>

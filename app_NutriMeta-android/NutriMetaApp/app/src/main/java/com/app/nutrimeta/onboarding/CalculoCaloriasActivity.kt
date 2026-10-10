@@ -1,10 +1,12 @@
-package com.app.nutrimeta
+package com.app.nutrimeta.onboarding
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.app.nutrimeta.R
+import com.app.nutrimeta.onboarding.SobreUsuarioActivity
 import com.google.android.material.button.MaterialButton
 
 class CalculoCaloriasActivity : AppCompatActivity() {
