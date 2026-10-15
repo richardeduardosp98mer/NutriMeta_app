@@ -8,7 +8,7 @@
     <h3 class="mb-4 text-center">Panel administrativo NutriMeta</h3>
     <div class="alert alert-danger" th:if="${param.error}">Correo o contraseña incorrectos.</div>
     <div class="alert alert-success" th:if="${param.salio}">Sesión cerrada.</div>
-    <form th:action="@{/controller/login}" method="post">
+    <form th:action="@{/portal/login}" method="post">
         <div class="mb-3">
             <label class="form-label">Correo</label>
             <input type="email" name="username" class="form-control" required>

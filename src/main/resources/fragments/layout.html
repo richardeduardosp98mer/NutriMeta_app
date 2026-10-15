@@ -8,17 +8,17 @@
 <body>
 <nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
     <div class="container">
-        <a class="navbar-brand" th:href="@{/controller}">NutriMeta — Panel</a>
+        <a class="navbar-brand" th:href="@{/portal}">NutriMeta — Panel</a>
         <div class="navbar-nav">
-            <a class="nav-link" th:href="@{/controller/alimentos}">Alimentos</a>
-            <a class="nav-link" th:href="@{/controller/usuarios}">Usuarios</a>
-            <a class="nav-link" th:href="@{/controller/registros}">Registros</a>
-            <a class="nav-link" th:href="@{/controller/grupos}">Grupos</a>
-            <a class="nav-link" th:href="@{/controller/niveles-actividad}">Niveles de actividad</a>
-            <a class="nav-link" th:href="@{/controller/tipos-comida}">Tipos de comida</a>
-            <a class="nav-link" th:href="@{/controller/administradores}">Administradores</a>
+            <a class="nav-link" th:href="@{/portal/alimentos}">Alimentos</a>
+            <a class="nav-link" th:href="@{/portal/usuarios}">Usuarios</a>
+            <a class="nav-link" th:href="@{/portal/registros}">Registros</a>
+            <a class="nav-link" th:href="@{/portal/grupos}">Grupos</a>
+            <a class="nav-link" th:href="@{/portal/niveles-actividad}">Niveles de actividad</a>
+            <a class="nav-link" th:href="@{/portal/tipos-comida}">Tipos de comida</a>
+            <a class="nav-link" th:href="@{/portal/administradores}">Administradores</a>
         </div>
-        <form th:action="@{/controller/logout}" method="post" class="d-flex">
+        <form th:action="@{/portal/logout}" method="post" class="d-flex">
             <button class="btn btn-outline-light btn-sm" type="submit">Cerrar sesión</button>
         </form>
     </div>

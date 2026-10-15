@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Grupo de alimentos')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container" style="max-width: 480px;">
+    <h2>Grupo de alimentos</h2>
+    <form th:action="@{/portal/grupos/guardar}" th:object="${grupo}" method="post">
+        <input type="hidden" th:field="*{idGrupo}">
+        <div class="mb-3">
+            <label class="form-label">Código (1 letra)</label>
+            <input class="form-control" th:field="*{codigo}" maxlength="1" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-link" th:href="@{/portal/grupos}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

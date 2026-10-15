@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Grupos de alimentos')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Grupos de alimentos</h2>
+        <a class="btn btn-primary" th:href="@{/portal/grupos/nuevo}">Nuevo grupo</a>
+    </div>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <table class="table table-striped">
+        <thead><tr><th>Código</th><th>Nombre</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="g : ${grupos}">
+            <td th:text="${g.codigo}"></td>
+            <td th:text="${g.nombre}"></td>
+            <td>
+                <a class="btn btn-sm btn-secondary" th:href="@{/portal/grupos/{id}/editar(id=${g.idGrupo})}">Editar</a>
+                <form th:action="@{/portal/grupos/{id}/eliminar(id=${g.idGrupo})}" method="post" class="d-inline"
+                      onsubmit="return confirm('¿Eliminar este grupo?');">
+                    <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
