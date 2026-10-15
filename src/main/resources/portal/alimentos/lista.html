@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Alimentos')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Alimentos</h2>
+    <a class="btn btn-primary" th:href="@{/portal/alimentos/nuevo}">Nuevo alimento</a>
+  </div>
+
+  <form class="row g-2 mb-3" method="get" th:action="@{/portal/alimentos}">
+    <div class="col-auto">
+      <input class="form-control" type="text" name="nombre" th:value="${nombre}" placeholder="Buscar por nombre">
+    </div>
+    <div class="col-auto">
+      <select class="form-select" name="idGrupo">
+        <option value="">Todos los grupos</option>
+        <option th:each="g : ${grupos}" th:value="${g.idGrupo}" th:text="${g.nombre}"
+                th:selected="${g.idGrupo == idGrupo}"></option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <select class="form-select" name="activo">
+        <option value="">Todos los estados</option>
+        <option value="true" th:selected="${activo == true}">Activos</option>
+        <option value="false" th:selected="${activo == false}">Inactivos</option>
+      </select>
+    </div>
+    <div class="col-auto"><button class="btn btn-outline-secondary" type="submit">Filtrar</button></div>
+  </form>
+
+  <table class="table table-striped">
+    <thead><tr><th>Nombre</th><th>Grupo</th><th>kcal/100g</th><th>Estado</th><th></th></tr></thead>
+    <tbody>
+    <tr th:each="a : ${pagina.content}">
+      <td th:text="${a.nombre}"></td>
+      <td th:text="${a.grupo.nombre}"></td>
+      <td th:text="${a.energiaKcal}"></td>
+      <td>
+        <span th:if="${a.activo}" class="badge bg-success">Activo</span>
+        <span th:unless="${a.activo}" class="badge bg-secondary">Inactivo</span>
+      </td>
+      <td>
+        <a class="btn btn-sm btn-secondary" th:href="@{/portal/alimentos/{id}/editar(id=${a.idAlimento})}">Editar</a>
+        <form th:if="${a.activo}" th:action="@{/portal/alimentos/{id}/desactivar(id=${a.idAlimento})}"
+              method="post" class="d-inline">
+          <button class="btn btn-sm btn-warning" type="submit">Desactivar</button>
+        </form>
+        <form th:unless="${a.activo}" th:action="@{/portal/alimentos/{id}/activar(id=${a.idAlimento})}"
+              method="post" class="d-inline">
+          <button class="btn btn-sm btn-success" type="submit">Activar</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <nav th:if="${pagina.totalPages > 1}">
+    <ul class="pagination">
+      <li class="page-item" th:each="n : ${#numbers.sequence(0, pagina.totalPages - 1)}"
+          th:classappend="${n == pagina.number} ? 'active'">
+        <a class="page-link"
+           th:href="@{/portal/alimentos(pagina=${n}, nombre=${nombre}, idGrupo=${idGrupo}, activo=${activo})}"
+           th:text="${n + 1}"></a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Alimento')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container" style="max-width: 560px;">
+    <h2>Alimento</h2>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <form th:action="@{/portal/alimentos/guardar}" th:object="${alimento}" method="post">
+        <input type="hidden" th:field="*{idAlimento}">
+        <div class="mb-3">
+            <label class="form-label">Código INS (opcional)</label>
+            <input class="form-control" th:field="*{codigoIns}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Grupo</label>
+            <select class="form-select" th:field="*{grupo.idGrupo}" required>
+                <option th:each="g : ${grupos}" th:value="${g.idGrupo}" th:text="${g.nombre}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+        <div class="row">
+            <div class="col mb-3"><label class="form-label">Energía (kcal/100g)</label>
+                <input class="form-control" type="number" step="0.1" th:field="*{energiaKcal}" required></div>
+            <div class="col mb-3"><label class="form-label">Proteína (g)</label>
+                <input class="form-control" type="number" step="0.01" th:field="*{proteinaG}" required></div>
+        </div>
+        <div class="row">
+            <div class="col mb-3"><label class="form-label">Grasa (g)</label>
+                <input class="form-control" type="number" step="0.01" th:field="*{grasaG}" required></div>
+            <div class="col mb-3"><label class="form-label">Carbohidratos (g)</label>
+                <input class="form-control" type="number" step="0.01" th:field="*{carbohidratosG}" required></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fibra (g, opcional)</label>
+            <input class="form-control" type="number" step="0.01" th:field="*{fibraG}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Método de carbohidratos</label>
+            <select class="form-select" th:field="*{metodoCarbohidratos}">
+                <option th:each="m : ${metodos}" th:value="${m}" th:text="${m}"></option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-link" th:href="@{/portal/alimentos}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
