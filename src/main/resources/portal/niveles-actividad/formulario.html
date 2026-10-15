@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Nivel de actividad')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container" style="max-width: 480px;">
+    <h2>Nivel de actividad</h2>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <form th:action="@{/portal/niveles-actividad/guardar}" th:object="${nivel}" method="post">
+        <input type="hidden" th:field="*{idNivelActividad}">
+        <div class="mb-3">
+            <label class="form-label">Código</label>
+            <input class="form-control" th:field="*{codigo}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <input class="form-control" th:field="*{descripcion}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Factor (1.0 a 2.5)</label>
+            <input class="form-control" type="number" step="0.001" th:field="*{factor}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Orden</label>
+            <input class="form-control" type="number" th:field="*{orden}">
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-link" th:href="@{/portal/niveles-actividad}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

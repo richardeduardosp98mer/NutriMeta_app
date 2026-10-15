@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Tipos de comida')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Tipos de comida</h2>
+        <a class="btn btn-primary" th:href="@{/portal/tipos-comida/nuevo}">Nuevo tipo de comida</a>
+    </div>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <table class="table table-striped">
+        <thead><tr><th>Nombre</th><th>Orden</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="t : ${tipos}">
+            <td th:text="${t.nombre}"></td>
+            <td th:text="${t.orden}"></td>
+            <td>
+                <a class="btn btn-sm btn-secondary" th:href="@{/portal/tipos-comida/{id}/editar(id=${t.idTipoComida})}">Editar</a>
+                <form th:action="@{/portal/tipos-comida/{id}/eliminar(id=${t.idTipoComida})}" method="post" class="d-inline"
+                      onsubmit="return confirm('¿Eliminar este tipo de comida?');">
+                    <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

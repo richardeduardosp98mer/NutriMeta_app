@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Niveles de actividad')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Niveles de actividad</h2>
+    <a class="btn btn-primary" th:href="@{/portal/niveles-actividad/nuevo}">Nuevo nivel</a>
+  </div>
+  <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+  <table class="table table-striped">
+    <thead><tr><th>Código</th><th>Nombre</th><th>Factor</th><th></th></tr></thead>
+    <tbody>
+    <tr th:each="n : ${niveles}">
+      <td th:text="${n.codigo}"></td>
+      <td th:text="${n.nombre}"></td>
+      <td th:text="${n.factor}"></td>
+      <td>
+        <a class="btn btn-sm btn-secondary" th:href="@{/portal/niveles-actividad/{id}/editar(id=${n.idNivelActividad})}">Editar</a>
+        <form th:action="@{/portal/niveles-actividad/{id}/eliminar(id=${n.idNivelActividad})}" method="post" class="d-inline"
+              onsubmit="return confirm('¿Eliminar este nivel?');">
+          <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

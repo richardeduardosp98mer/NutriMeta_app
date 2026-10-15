@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Tipo de comida')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container" style="max-width: 480px;">
+    <h2>Tipo de comida</h2>
+    <form th:action="@{/portal/tipos-comida/guardar}" th:object="${tipo}" method="post">
+        <input type="hidden" th:field="*{idTipoComida}">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Orden</label>
+            <input class="form-control" type="number" th:field="*{orden}">
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-link" th:href="@{/portal/tipos-comida}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

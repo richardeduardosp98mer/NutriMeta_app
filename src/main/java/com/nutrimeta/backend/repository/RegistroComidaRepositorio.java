@@ -23,5 +23,5 @@ public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida,
             @Param("desde") LocalDate desde,
             @Param("hasta") LocalDate hasta
             );
-    boolean existsByTipoComida(Integer idTipoComida);
+    boolean existsByTipoComidaIdTipoComida(Integer idTipoComida);
 }
