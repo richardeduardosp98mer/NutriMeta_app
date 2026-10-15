@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Archivos locales de Firebase y firma (no subir al repo)
+app/google-services.json
+app/debug.keystore
