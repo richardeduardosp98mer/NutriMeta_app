@@ -1,4 +1,8 @@
 package com.nutrimeta.backend.repository;
 
-public interface GrupoAlimentoRepositorio {
+import com.nutrimeta.backend.entity.GrupoAlimento;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GrupoAlimentoRepositorio  extends JpaRepository<GrupoAlimento, Integer> {
+
 }
