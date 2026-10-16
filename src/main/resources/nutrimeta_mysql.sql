@@ -1,6 +1,6 @@
 -- =====================================================================
 -- NutriMeta - Modelo físico (MySQL 8)
--- Versión 0.1 (propuesta) - 01-oct-2026
+-- Versión 0.2 (propuesta v2) - 15-oct-2026
 -- Contenido: estructura de tablas, vista de consumo diario,
 --            datos de referencia y administrador inicial.
 -- Los 200 alimentos se cargan aparte: nutrimeta_mysql_alimentos.sql
@@ -54,6 +54,7 @@ CREATE TABLE alimento (
     codigo_ins           VARCHAR(8)       NULL COMMENT 'Código del INS, ej. "A 3". NULL si lo creó el administrador',
     id_grupo             TINYINT UNSIGNED NOT NULL,
     nombre               VARCHAR(150)     NOT NULL,
+    unidad               ENUM('g','ml')   NOT NULL DEFAULT 'g' COMMENT 'Unidad base: los valores nutricionales son por 100 de esta unidad y la porción se registra en ella',
     energia_kcal         DECIMAL(6,1)     NOT NULL COMMENT 'Por 100 g de parte comestible',
     proteina_g           DECIMAL(6,2)     NOT NULL COMMENT 'Por 100 g',
     grasa_g              DECIMAL(6,2)     NOT NULL COMMENT 'Por 100 g',
@@ -61,6 +62,8 @@ CREATE TABLE alimento (
     fibra_g              DECIMAL(6,2)     NULL     COMMENT 'Por 100 g. NULL = no reportado por el INS (no es 0)',
     metodo_carbohidratos ENUM('DISPONIBLES','TOTALES_MENOS_FIBRA','TOTALES','DERIVADO_ENERGIA','MANUAL')
                                           NOT NULL COMMENT 'Cómo se obtuvo carbohidratos_g (regla del 30-sep-2026)',
+    fuente               ENUM('INS','INS_IMPUTADO','ETIQUETA','ADMIN')
+                                          NOT NULL DEFAULT 'ADMIN' COMMENT 'Origen del dato: INS, INS con valor imputado (asterisco), etiqueta del producto o cargado por el administrador',
     activo               TINYINT(1)       NOT NULL DEFAULT 1,
     fecha_creacion       DATETIME(6)      NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     fecha_actualizacion  DATETIME(6)      NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
@@ -157,7 +160,7 @@ CREATE TABLE detalle_registro (
     id_detalle        BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     id_registro       BIGINT UNSIGNED NOT NULL,
     id_alimento       INT UNSIGNED    NOT NULL,
-    cantidad_g        DECIMAL(7,2)    NOT NULL,
+    cantidad_g        DECIMAL(7,2)    NOT NULL COMMENT 'Cantidad en la unidad del alimento (g o ml)',
     energia_kcal      DECIMAL(8,2)    NOT NULL COMMENT 'Congelado al registrar (RN-07)',
     proteina_g        DECIMAL(8,2)    NOT NULL COMMENT 'Congelado al registrar',
     grasa_g           DECIMAL(8,2)    NOT NULL COMMENT 'Congelado al registrar',
@@ -208,7 +211,7 @@ GROUP BY r.id_usuario, r.fecha;
 -- 7. DATOS DE REFERENCIA
 -- ---------------------------------------------------------------------
 
--- Los 8 grupos priorizados + 3 complementarios propuestos (D, J, K; ver modelo-datos-nutrimeta.md, decisión M1)
+-- Los 8 grupos priorizados + 4 complementarios propuestos (D, H, J, K; ver modelo-datos-nutrimeta.md, decisión M1)
 INSERT INTO grupo_alimento (codigo, nombre) VALUES
  ('A','Cereales y derivados'),
  ('B','Verduras, hortalizas y derivados'),
@@ -217,25 +220,26 @@ INSERT INTO grupo_alimento (codigo, nombre) VALUES
  ('E','Pescados y mariscos'),
  ('F','Carnes y derivados'),
  ('G','Leches y derivados'),
+ ('H','Bebidas (alcohólicas y analcohólicas)'),
  ('J','Huevos y derivados'),
  ('K','Productos azucarados'),
  ('T','Leguminosas y derivados'),
  ('U','Tubérculos, raíces y derivados');
 
--- Factores de actividad estándar usados con Mifflin-St Jeor
+-- Factores de actividad estándar usados con Mifflin-St Jeor (códigos y nombres iguales a los de la app)
 INSERT INTO nivel_actividad (codigo, nombre, descripcion, factor, orden) VALUES
- ('SEDENTARIO','Sedentario','Poco o nada de ejercicio',1.200,1),
- ('LIGERO','Ligero','Ejercicio ligero 1 a 3 días por semana',1.375,2),
- ('MODERADO','Moderado','Ejercicio moderado 3 a 5 días por semana',1.550,3),
- ('ACTIVO','Activo','Ejercicio intenso 6 a 7 días por semana',1.725,4),
- ('MUY_ACTIVO','Muy activo','Ejercicio muy intenso y trabajo físico',1.900,5);
+ ('SEDENTARIO','Sedentario','Poco o ningún ejercicio',1.200,1),
+ ('LIGERO','Ligeramente activo','Ejercicio ligero de 1 a 3 días por semana',1.375,2),
+ ('MODERADO','Moderadamente activo','Ejercicio moderado de 3 a 5 días por semana',1.550,3),
+ ('MUY_ACTIVO','Muy activo','Ejercicio intenso frecuente',1.725,4),
+ ('EXTREMO','Extremadamente activo','Actividad física muy exigente',1.900,5);
 
-INSERT INTO tipo_comida (nombre, orden) VALUES
- ('Desayuno',1),
- ('Media mañana',2),
- ('Almuerzo',3),
- ('Lonche',4),
- ('Cena',5);
+-- 4 tipos (los de la app). Ids explícitos: deben coincidir con los de SQLite.
+INSERT INTO tipo_comida (id_tipo_comida, nombre, orden) VALUES
+ (1,'Desayuno',1),
+ (2,'Almuerzo',2),
+ (3,'Cena',3),
+ (4,'Snacks',4);
 
 -- Administrador inicial. Contraseña: NutriMeta2026!  (CAMBIARLA desde el portal tras el primer ingreso)
 INSERT INTO administrador (correo, nombre, password_hash) VALUES

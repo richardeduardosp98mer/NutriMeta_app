@@ -11,7 +11,7 @@ class NutriMetaDatabaseHelper private constructor(
 ) : SQLiteOpenHelper(context.applicationContext, databaseName, null, DATABASE_VERSION) {
 
     companion object {
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
 
         // Requiere un UID autenticado; no usar correo ni contrasena.
         fun forUser(context: Context, firebaseUid: String): NutriMetaDatabaseHelper {
@@ -69,12 +69,21 @@ class NutriMetaDatabaseHelper private constructor(
                     id_grupo         INTEGER NOT NULL REFERENCES grupo_alimento (id_grupo),
                     nombre           TEXT    NOT NULL,
                     nombre_busqueda  TEXT    NOT NULL,
+                    unidad           TEXT    NOT NULL DEFAULT 'g' CHECK (unidad IN ('g','ml')),
                     energia_kcal     REAL    NOT NULL,
                     proteina_g       REAL    NOT NULL,
                     grasa_g          REAL    NOT NULL,
                     carbohidratos_g  REAL    NOT NULL,
                     fibra_g          REAL,
-                    activo           INTEGER NOT NULL DEFAULT 1 CHECK (activo IN (0,1))
+                    metodo_carbohidratos TEXT NOT NULL DEFAULT 'MANUAL'
+                        CHECK (metodo_carbohidratos IN ('DISPONIBLES','TOTALES_MENOS_FIBRA','TOTALES','DERIVADO_ENERGIA','MANUAL')),
+                    fuente           TEXT    NOT NULL DEFAULT 'ADMIN'
+                        CHECK (fuente IN ('INS','INS_IMPUTADO','ETIQUETA','ADMIN')),
+                    activo           INTEGER NOT NULL DEFAULT 1 CHECK (activo IN (0,1)),
+                    fecha_actualizacion TEXT,
+                    CHECK (energia_kcal >= 0 AND proteina_g >= 0 AND grasa_g >= 0 AND carbohidratos_g >= 0
+                           AND (fibra_g IS NULL OR fibra_g >= 0)
+                           AND proteina_g + grasa_g + carbohidratos_g <= 100)
                 );
             """.trimIndent()
         )
@@ -83,6 +92,7 @@ class NutriMetaDatabaseHelper private constructor(
                 CREATE INDEX ix_alimento_busqueda ON alimento (nombre_busqueda);
             """.trimIndent()
         )
+        db.execSQL("CREATE UNIQUE INDEX ux_alimento_codigo_ins ON alimento (codigo_ins);")
         db.execSQL(
             """
                 CREATE TABLE perfil (
@@ -155,6 +165,15 @@ class NutriMetaDatabaseHelper private constructor(
 
         if (db.isReadOnly) return
 
+        // Tipos de comida (mismos ids que MySQL). Se siembran para poder
+        // registrar comidas antes de la primera sincronizacion del catalogo.
+        db.execSQL(
+            """
+        INSERT OR IGNORE INTO tipo_comida (id_tipo_comida, nombre, orden)
+        VALUES (1, 'Desayuno', 1), (2, 'Almuerzo', 2), (3, 'Cena', 3), (4, 'Snacks', 4);
+        """.trimIndent()
+        )
+
         // Catálogo inicial de niveles de actividad.
         // INSERT OR IGNORE evita duplicar registros
         // y conserva los datos ya existentes.
@@ -206,9 +225,28 @@ class NutriMetaDatabaseHelper private constructor(
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // NO usar DROP TABLE: se perderian los registros sin sincronizar.
-        // Agregar aqui las migraciones cuando el equipo cambie el esquema.
-        throw IllegalStateException(
-            "Falta una migracion SQLite de la version $oldVersion a $newVersion"
+        if (oldVersion < 2) migrarV1aV2(db)
+        if (newVersion > 2) {
+            throw IllegalStateException(
+                "Falta una migracion SQLite de la version 2 a $newVersion"
+            )
+        }
+    }
+
+    // v2: unidad (g/ml), metodo de carbohidratos, fuente del dato y fecha de
+    // actualizacion (sincronizacion incremental: ?desde=MAX(fecha_actualizacion)).
+    // Solo ADD COLUMN: conserva todas las filas existentes.
+    private fun migrarV1aV2(db: SQLiteDatabase) {
+        db.execSQL("ALTER TABLE alimento ADD COLUMN unidad TEXT NOT NULL DEFAULT 'g' CHECK (unidad IN ('g','ml'))")
+        db.execSQL(
+            "ALTER TABLE alimento ADD COLUMN metodo_carbohidratos TEXT NOT NULL DEFAULT 'MANUAL' " +
+                "CHECK (metodo_carbohidratos IN ('DISPONIBLES','TOTALES_MENOS_FIBRA','TOTALES','DERIVADO_ENERGIA','MANUAL'))"
         )
+        db.execSQL(
+            "ALTER TABLE alimento ADD COLUMN fuente TEXT NOT NULL DEFAULT 'ADMIN' " +
+                "CHECK (fuente IN ('INS','INS_IMPUTADO','ETIQUETA','ADMIN'))"
+        )
+        db.execSQL("ALTER TABLE alimento ADD COLUMN fecha_actualizacion TEXT")
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS ux_alimento_codigo_ins ON alimento (codigo_ins)")
     }
 }
