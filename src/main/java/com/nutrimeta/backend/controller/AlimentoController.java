@@ -61,9 +61,15 @@ public class AlimentoController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Alimento alimento, Model model) {
-        // CA-12-02: ningún valor nutricional negativo.
+        // CA-12-02: ningún valor nutricional negativo. Además, la BD exige proteína + grasa + carbohidratos <= 100 g.
+        String error = null;
         if (esNegativo(alimento)) {
-            model.addAttribute("error", "Ningún valor nutricional puede ser negativo.");
+            error = "Ningún valor nutricional puede ser negativo.";
+        } else if (macronutrientesExceden100(alimento)) {
+            error = "Proteína + grasa + carbohidratos no pueden superar 100 g por cada 100 g de alimento.";
+        }
+        if (error != null) {
+            model.addAttribute("error", error);
             model.addAttribute("grupos", grupoRepositorio.findAll());
             model.addAttribute("metodos", Alimento.MetodoCarbohidratos.values());
             model.addAttribute("alimento", alimento);
@@ -100,6 +106,11 @@ public class AlimentoController {
         return esNegativo(a.getEnergiaKcal()) || esNegativo(a.getProteinaG())
                 || esNegativo(a.getGrasaG()) || esNegativo(a.getCarbohidratosG())
                 || (a.getFibraG() != null && esNegativo(a.getFibraG()));
+    }
+
+    private boolean macronutrientesExceden100(Alimento a) {
+        java.math.BigDecimal suma = a.getProteinaG().add(a.getGrasaG()).add(a.getCarbohidratosG());
+        return suma.compareTo(new java.math.BigDecimal("100")) > 0;
     }
 
     private boolean esNegativo(java.math.BigDecimal valor) {

@@ -7,6 +7,7 @@ import com.nutrimeta.backend.repository.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,16 +49,17 @@ public class RegistroComidaController {
 
     @GetMapping("/{id}")
     public String detalle(@PathVariable Long id, Model model) {
-        model.addAttribute("registro", repositorio.findById(id).orElseThrow());
+        model.addAttribute("registro", repositorio.findConDetallesById(id).orElseThrow());
         model.addAttribute("tiposComida", tipoComidaRepositorio.findAll());
         return "portal/registros/detalle";
     }
 
+    @Transactional
     @PostMapping("/{id}/guardar")
     public String guardar(@PathVariable Long id, @RequestParam Integer idTipoComida, @RequestParam LocalDate fecha,
                           @RequestParam java.util.List<Long> idDetalle, @RequestParam java.util.List<BigDecimal> cantidadG) {
 
-        RegistroComida registro = repositorio.findById(id).orElseThrow();
+        RegistroComida registro = repositorio.findConDetallesById(id).orElseThrow();
         registro.setTipoComida(tipoComidaRepositorio.findById(idTipoComida).orElseThrow());
         registro.setFecha(fecha);
 
@@ -81,7 +83,8 @@ public class RegistroComidaController {
         }
 
         registro.setVersion(registro.getVersion() + 1);
-        // Aviso push SYNC al usuario dueño: lo dispara el repositorio.save(registro);paquete `firebase/` cuando R1 lo tenga listo.
+        repositorio.save(registro);
+        // Aviso push SYNC al usuario dueño: lo dispara el paquete `firebase/` cuando R1 lo tenga listo.
         return "redirect:/portal/registros/" + id;
     }
 

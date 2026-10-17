@@ -8,6 +8,7 @@
     <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
     <form th:action="@{/portal/alimentos/guardar}" th:object="${alimento}" method="post">
         <input type="hidden" th:field="*{idAlimento}">
+        <input type="hidden" th:field="*{activo}">
         <div class="mb-3">
             <label class="form-label">Código INS (opcional)</label>
             <input class="form-control" th:field="*{codigoIns}">

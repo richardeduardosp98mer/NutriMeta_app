@@ -7,8 +7,10 @@ import com.nutrimeta.backend.service.MetaService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 
@@ -49,15 +51,28 @@ public class UsuarioController {
         return "portal/usuarios/detalle";
     }
 
+    @Transactional
     @PostMapping("/{id}/perfil/guardar")
-    public String guardarPerfil(@PathVariable Long id, @ModelAttribute Perfil formulario) {
+    public String guardarPerfil(@PathVariable Long id, @ModelAttribute Perfil formulario,
+                                RedirectAttributes redirect) {
+        // Mismas reglas que el CHECK ck_perfil_objetivo de la BD: se avisa en pantalla en vez de fallar con 500.
+        String error = validarPerfil(formulario);
+        if (error != null) {
+            redirect.addFlashAttribute("error", error);
+            return "redirect:/portal/usuarios/" + id;
+        }
+
         Perfil perfil = perfilRepositorio.findByUsuarioIdUsuario(id).orElseThrow();
 
         perfil.setPesoKg(formulario.getPesoKg());
-        perfil.setNivelActividad(formulario.getNivelActividad());
+        // El formulario solo trae el id del nivel: se carga completo para tener su factor.
+        perfil.setNivelActividad(nivelRepositorio
+                .findById(formulario.getNivelActividad().getIdNivelActividad()).orElseThrow());
         perfil.setObjetivo(formulario.getObjetivo());
-        perfil.setPesoObjetivoKg(formulario.getPesoObjetivoKg());
-        perfil.setPlazoSemanas(formulario.getPlazoSemanas());
+        // Con MANTENER la BD exige peso objetivo y plazo en NULL.
+        boolean mantener = formulario.getObjetivo() == Perfil.Objetivo.MANTENER;
+        perfil.setPesoObjetivoKg(mantener ? null : formulario.getPesoObjetivoKg());
+        perfil.setPlazoSemanas(mantener ? null : formulario.getPlazoSemanas());
 
         // CA-13-02: recalcula la meta con las mismas reglas RN-03 a RN-06.
         int edad = metaService.calcularEdad(perfil.getFechaNacimiento());
@@ -77,6 +92,27 @@ public class UsuarioController {
         perfilRepositorio.save(perfil);
         // Aviso push SYNC al usuario: lo dispara el paquete `firebase/` cuando R1 lo tenga listo.
         return "redirect:/portal/usuarios/" + id;
+    }
+
+    private String validarPerfil(Perfil f) {
+        BigDecimal peso = f.getPesoKg();
+        if (peso == null || peso.compareTo(new BigDecimal("30")) < 0 || peso.compareTo(new BigDecimal("300")) > 0) {
+            return "El peso debe estar entre 30 y 300 kg.";
+        }
+        if (f.getObjetivo() == Perfil.Objetivo.MANTENER) {
+            return null;
+        }
+        if (f.getPesoObjetivoKg() == null || f.getPlazoSemanas() == null || f.getPlazoSemanas() < 1) {
+            return "Para bajar o subir de peso indica el peso objetivo y un plazo de al menos 1 semana.";
+        }
+        int comparacion = f.getPesoObjetivoKg().compareTo(peso);
+        if (f.getObjetivo() == Perfil.Objetivo.BAJAR && comparacion >= 0) {
+            return "Para bajar, el peso objetivo debe ser menor que el peso actual.";
+        }
+        if (f.getObjetivo() == Perfil.Objetivo.SUBIR && comparacion <= 0) {
+            return "Para subir, el peso objetivo debe ser mayor que el peso actual.";
+        }
+        return null;
     }
 
     @PostMapping("/{id}/activar")

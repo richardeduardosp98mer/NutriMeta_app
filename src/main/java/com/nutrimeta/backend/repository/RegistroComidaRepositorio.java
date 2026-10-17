@@ -3,14 +3,17 @@ package com.nutrimeta.backend.repository;
 import com.nutrimeta.backend.entity.RegistroComida;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida, Long> {
 
+    @EntityGraph(attributePaths = {"usuario", "tipoComida"})
     @Query("""
         SELECT r FROM RegistroComida r
             WHERE r.eliminado = false
@@ -24,5 +27,11 @@ public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida,
             @Param("desde") LocalDate desde,
             @Param("hasta") LocalDate hasta,
             Pageable pageable);
+
+    // Carga todo lo que usa la pantalla de detalle (open-in-view está desactivado).
+    @EntityGraph(attributePaths = {"usuario", "tipoComida", "detalles", "detalles.alimento"})
+    @Query("SELECT r FROM RegistroComida r WHERE r.idRegistro = :id")
+    Optional<RegistroComida> findConDetallesById(@Param("id") Long id);
+
     boolean existsByTipoComidaIdTipoComida(Integer idTipoComida);
 }
