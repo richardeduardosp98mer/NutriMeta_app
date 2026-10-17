@@ -12,7 +12,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
+    @Column(name = "id_usuario", columnDefinition = "int unsigned")
     private Long idUsuario;
 
     @Column(name = "firebase_uid", nullable = false, length = 128)

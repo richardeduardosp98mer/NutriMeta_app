@@ -16,11 +16,11 @@ public class DetalleRegistro {
     private Long idDetalle;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_registro", nullable = false)
+    @JoinColumn(name = "id_registro", nullable = false, columnDefinition = "bigint unsigned")
     private RegistroComida registro;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_alimento", nullable = false)
+    @JoinColumn(name = "id_alimento", nullable = false, columnDefinition = "int unsigned")
     private Alimento alimento;
 
     @Column(name = "cantidad_g", nullable = false, precision = 7, scale = 2)

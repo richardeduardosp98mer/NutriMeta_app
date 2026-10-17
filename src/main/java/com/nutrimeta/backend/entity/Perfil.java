@@ -17,11 +17,11 @@ public class Perfil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_perfil")
+    @Column(name = "id_perfil", columnDefinition = "int unsigned")
     private Long idPerfil;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario", nullable = false, unique = true)
+    @JoinColumn(name = "id_usuario", nullable = false, unique = true, columnDefinition = "int unsigned")
     private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
@@ -38,7 +38,7 @@ public class Perfil {
     private BigDecimal tallaCm;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_nivel_actividad", nullable = false)
+    @JoinColumn(name = "id_nivel_actividad", nullable = false, columnDefinition = "tinyint unsigned")
     private NivelActividad nivelActividad;
 
     @Enumerated(EnumType.STRING)
@@ -48,7 +48,7 @@ public class Perfil {
     @Column(name = "peso_objetivo_kg", precision = 5, scale = 2)
     private BigDecimal pesoObjetivoKg;
 
-    @Column(name = "plazo_semanas")
+    @Column(name = "plazo_semanas", columnDefinition = "smallint unsigned")
     private Integer plazoSemanas;
 
     @Column(name = "meta_kcal", nullable = false, precision = 6, scale = 1)

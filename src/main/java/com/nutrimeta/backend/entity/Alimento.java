@@ -12,26 +12,26 @@ import java.time.LocalDateTime;
 public class Alimento {
 
     public enum MetodoCarbohidratos{
-        DISPONIBLES, TOTALES_NEMOS_FIBRA, TOTALES, DERIVADO_ENERGIA, MANUAL
+        DISPONIBLES, TOTALES_MENOS_FIBRA, TOTALES, DERIVADO_ENERGIA, MANUAL
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alimento")
-    private long idAlimento;
+    @Column(name = "id_alimento", columnDefinition = "int unsigned")
+    private Long idAlimento;
 
     @Column(name = "codigo_ins", length = 8)
     private String codigoIns;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_grupo", nullable = false)
+    @JoinColumn(name = "id_grupo", nullable = false, columnDefinition = "tinyint unsigned")
     private GrupoAlimento grupo;
 
     @Column(nullable = false, length = 150)
     private String nombre;
 
     @Column(name = "energia_kcal", nullable = false, precision = 6, scale = 1)
-    private BigDecimal energiakacl;
+    private BigDecimal energiaKcal;
 
     @Column(name = "proteina_g", nullable = false, precision = 6, scale = 2)
     private BigDecimal proteinaG;

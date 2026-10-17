@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class NivelActividad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_nivel_actividad")
+    @Column(name = "id_nivel_actividad", columnDefinition = "tinyint unsigned")
     private Integer idNivelActividad;
     @Column(nullable = false, length = 20)
     private String codigo;
@@ -21,7 +21,7 @@ public class NivelActividad {
     private String descripcion;
     @Column(nullable = false, precision = 4, scale = 3)
     private BigDecimal factor;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "tinyint unsigned")
     private Integer orden = 0;
 
 
