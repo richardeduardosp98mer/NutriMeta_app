@@ -48,6 +48,7 @@ public class AlimentoController {
         model.addAttribute("alimento", alimento);
         model.addAttribute("grupos", grupoRepositorio.findAll());
         model.addAttribute("metodos", Alimento.MetodoCarbohidratos.values());
+        model.addAttribute("unidades", Alimento.Unidad.values());
         return "portal/alimentos/formulario";
     }
 
@@ -56,6 +57,7 @@ public class AlimentoController {
         model.addAttribute("alimento", repositorio.findById(id).orElseThrow());
         model.addAttribute("grupos", grupoRepositorio.findAll());
         model.addAttribute("metodos", Alimento.MetodoCarbohidratos.values());
+        model.addAttribute("unidades", Alimento.Unidad.values());
         return "portal/alimentos/formulario";
     }
 
@@ -72,6 +74,7 @@ public class AlimentoController {
             model.addAttribute("error", error);
             model.addAttribute("grupos", grupoRepositorio.findAll());
             model.addAttribute("metodos", Alimento.MetodoCarbohidratos.values());
+            model.addAttribute("unidades", Alimento.Unidad.values());
             model.addAttribute("alimento", alimento);
             return "portal/alimentos/formulario";
         }
