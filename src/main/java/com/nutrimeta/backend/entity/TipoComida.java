@@ -10,10 +10,10 @@ public class TipoComida {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_comida")
+    @Column(name = "id_tipo_comida", columnDefinition = "tinyint unsigned")
     private Integer idTipoComida;
     @Column(nullable = false, length = 30)
     private String nombre;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "tinyint unsigned")
     private Integer orden = 0;
 }

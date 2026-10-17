@@ -12,7 +12,7 @@ public class Administrador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_administrador")
+    @Column(name = "id_administrador", columnDefinition = "int unsigned")
     private Long idAdministrador;
 
     @Column(nullable = false, length = 254)

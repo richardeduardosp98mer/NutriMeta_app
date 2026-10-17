@@ -10,10 +10,10 @@ public class GrupoAlimento {
     // ID del alimento
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_grupo")
+    @Column(name = "id_grupo", columnDefinition = "tinyint unsigned")
     private Integer idGrupo;
     // Letra del grupo en las Tablas del INS
-    @Column(nullable = false, length = 1)
+    @Column(nullable = false, length = 1, columnDefinition = "char(1)")
     private String codigo;
     // Nombre del alimento
     @Column(nullable = false, length = 60)

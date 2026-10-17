@@ -18,15 +18,15 @@ public class RegistroComida {
     @Column(name = "id_registro")
     private Long idRegistro;
 
-    @Column(nullable = false, length = 36)
+    @Column(nullable = false, length = 36, columnDefinition = "char(36)")
     private String uuid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false, columnDefinition = "int unsigned")
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_tipo_comida", nullable = false)
+    @JoinColumn(name = "id_tipo_comida", nullable = false, columnDefinition = "tinyint unsigned")
     private TipoComida tipoComida;
 
     @Column(nullable = false)
