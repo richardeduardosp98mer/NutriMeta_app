@@ -24,6 +24,7 @@
 
     <div th:if="${perfil != null}">
         <h4>Perfil y meta</h4>
+        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
         <form th:action="@{/portal/usuarios/{id}/perfil/guardar(id=${usuario.idUsuario})}" th:object="${perfil}" method="post">
             <div class="row">
                 <div class="col mb-3">
