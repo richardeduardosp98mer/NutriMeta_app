@@ -2,6 +2,7 @@ package com.nutrimeta.backend.repository;
 
 import com.nutrimeta.backend.entity.RegistroComida;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +22,7 @@ public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida,
     Page<RegistroComida> buscar(
             @Param("idUsuario") Long idUsuario,
             @Param("desde") LocalDate desde,
-            @Param("hasta") LocalDate hasta
-            );
+            @Param("hasta") LocalDate hasta,
+            PageRequest fecha);
     boolean existsByTipoComidaIdTipoComida(Integer idTipoComida);
 }

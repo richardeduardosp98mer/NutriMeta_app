@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Detalle de usuario')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <h2 th:text="${usuario.nombre}"></h2>
+    <p>
+        <strong>Correo:</strong> <span th:text="${usuario.correo}"></span><br>
+        <strong>Consentimiento aceptado:</strong>
+        <span th:text="${usuario.fechaAceptacionTerminos}"></span>
+        (versión <span th:text="${usuario.versionTerminos}"></span>)
+    </p>
+
+    <form th:if="${usuario.activo}" th:action="@{/portal/usuarios/{id}/desactivar(id=${usuario.idUsuario})}"
+          method="post" onsubmit="return confirm('¿Desactivar este usuario?');">
+        <button class="btn btn-warning mb-4" type="submit">Desactivar usuario</button>
+    </form>
+    <form th:unless="${usuario.activo}" th:action="@{/portal/usuarios/{id}/activar(id=${usuario.idUsuario})}" method="post">
+        <button class="btn btn-success mb-4" type="submit">Reactivar usuario</button>
+    </form>
+
+    <div th:if="${perfil == null}" class="alert alert-info">Este usuario aún no configuró su perfil.</div>
+
+    <div th:if="${perfil != null}">
+        <h4>Perfil y meta</h4>
+        <form th:action="@{/portal/usuarios/{id}/perfil/guardar(id=${usuario.idUsuario})}" th:object="${perfil}" method="post">
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Peso (kg)</label>
+                    <input class="form-control" type="number" step="0.1" th:field="*{pesoKg}" required>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label">Nivel de actividad</label>
+                    <select class="form-select" th:field="*{nivelActividad.idNivelActividad}">
+                        <option th:each="n : ${niveles}" th:value="${n.idNivelActividad}" th:text="${n.nombre}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Objetivo</label>
+                    <select class="form-select" th:field="*{objetivo}">
+                        <option value="MANTENER">Mantener</option>
+                        <option value="BAJAR">Bajar</option>
+                        <option value="SUBIR">Subir</option>
+                    </select>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label">Peso objetivo (kg)</label>
+                    <input class="form-control" type="number" step="0.1" th:field="*{pesoObjetivoKg}">
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label">Plazo (semanas)</label>
+                    <input class="form-control" type="number" th:field="*{plazoSemanas}">
+                </div>
+            </div>
+            <p class="text-muted">
+                Meta actual: <span th:text="${perfil.metaKcal}"></span> kcal
+                (<span th:if="${perfil.metaAjustada}" class="text-warning">ajustada por seguridad</span>
+                <span th:unless="${perfil.metaAjustada}">sin ajustar</span>) — versión <span th:text="${perfil.version}"></span>
+            </p>
+            <button class="btn btn-primary" type="submit">Guardar y recalcular</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

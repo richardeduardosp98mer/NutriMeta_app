@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Usuarios')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <h2 class="mb-3">Usuarios</h2>
+    <form class="row g-2 mb-3" method="get" th:action="@{/portal/usuarios}">
+        <div class="col-auto">
+            <input class="form-control" name="texto" th:value="${texto}" placeholder="Buscar por nombre o correo">
+        </div>
+        <div class="col-auto"><button class="btn btn-outline-secondary" type="submit">Buscar</button></div>
+    </form>
+    <table class="table table-striped">
+        <thead><tr><th>Nombre</th><th>Correo</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="u : ${pagina.content}">
+            <td th:text="${u.nombre}"></td>
+            <td th:text="${u.correo}"></td>
+            <td>
+                <span th:if="${u.activo}" class="badge bg-success">Activo</span>
+                <span th:unless="${u.activo}" class="badge bg-secondary">Inactivo</span>
+            </td>
+            <td><a class="btn btn-sm btn-secondary" th:href="@{/portal/usuarios/{id}(id=${u.idUsuario})}">Ver</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

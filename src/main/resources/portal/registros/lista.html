@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Registros de comida')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <h2 class="mb-3">Registros de comida</h2>
+    <form class="row g-2 mb-3" method="get" th:action="@{/portal/registros}">
+        <div class="col-auto">
+            <select class="form-select" name="idUsuario">
+                <option value="">Todos los usuarios</option>
+                <option th:each="u : ${usuarios}" th:value="${u.idUsuario}" th:text="${u.nombre}"
+                        th:selected="${u.idUsuario == idUsuario}"></option>
+            </select>
+        </div>
+        <div class="col-auto"><input class="form-control" type="date" name="desde" th:value="${desde}"></div>
+        <div class="col-auto"><input class="form-control" type="date" name="hasta" th:value="${hasta}"></div>
+        <div class="col-auto"><button class="btn btn-outline-secondary" type="submit">Filtrar</button></div>
+    </form>
+    <table class="table table-striped">
+        <thead><tr><th>Fecha</th><th>Usuario</th><th>Tipo de comida</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="r : ${pagina.content}">
+            <td th:text="${r.fecha}"></td>
+            <td th:text="${r.usuario.nombre}"></td>
+            <td th:text="${r.tipoComida.nombre}"></td>
+            <td><a class="btn btn-sm btn-secondary" th:href="@{/portal/registros/{id}(id=${r.idRegistro})}">Ver</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

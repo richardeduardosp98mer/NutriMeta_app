@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Administrador')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container" style="max-width: 480px;">
+    <h2>Administrador</h2>
+    <form th:action="@{/portal/administradores/guardar}" th:object="${administrador}" method="post">
+        <input type="hidden" th:field="*{idAdministrador}">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input class="form-control" type="email" th:field="*{correo}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"
+                   th:text="${administrador.idAdministrador == null} ? 'Contraseña' : 'Nueva contraseña (dejar vacío para no cambiar)'"></label>
+            <input class="form-control" type="password" name="nuevaClave"
+                   th:required="${administrador.idAdministrador == null}">
+        </div>
+        <div class="form-check mb-3" th:if="${administrador.idAdministrador != null}">
+            <input class="form-check-input" type="checkbox" th:field="*{activo}">
+            <label class="form-check-label">Activo</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-link" th:href="@{/portal/administradores}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

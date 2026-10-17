@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Administradores')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav}"></nav>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Administradores</h2>
+        <a class="btn btn-primary" th:href="@{/portal/administradores/nuevo}">Nuevo administrador</a>
+    </div>
+    <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+    <table class="table table-striped">
+        <thead><tr><th>Nombre</th><th>Correo</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        <tr th:each="a : ${administradores}">
+            <td th:text="${a.nombre}"></td>
+            <td th:text="${a.correo}"></td>
+            <td>
+                <span th:if="${a.activo}" class="badge bg-success">Activo</span>
+                <span th:unless="${a.activo}" class="badge bg-secondary">Inactivo</span>
+            </td>
+            <td>
+                <a class="btn btn-sm btn-secondary" th:href="@{/portal/administradores/{id}/editar(id=${a.idAdministrador})}">Editar</a>
+                <form th:if="${a.activo}" th:action="@{/portal/administradores/{id}/desactivar(id=${a.idAdministrador})}"
+                      method="post" class="d-inline" onsubmit="return confirm('¿Desactivar?');">
+                    <button class="btn btn-sm btn-warning" type="submit">Desactivar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
