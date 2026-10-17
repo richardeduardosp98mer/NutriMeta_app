@@ -23,6 +23,12 @@
             <label class="form-label">Nombre</label>
             <input class="form-control" th:field="*{nombre}" required>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Unidad (los valores nutricionales son por 100 de esta unidad)</label>
+            <select class="form-select" th:field="*{unidad}">
+                <option th:each="u : ${unidades}" th:value="${u}" th:text="${u}"></option>
+            </select>
+        </div>
         <div class="row">
             <div class="col mb-3"><label class="form-label">Energía (kcal/100g)</label>
                 <input class="form-control" type="number" step="0.1" th:field="*{energiaKcal}" required></div>
