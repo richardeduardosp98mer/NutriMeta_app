@@ -73,7 +73,7 @@ public class RegistroComidaController {
             if (detalle.getCantidadG().compareTo(nuevaCantidad) != 0) {
                 Alimento alimento = detalle.getAlimento();
                 detalle.setCantidadG(nuevaCantidad);
-                detalle.setEnergiaKcal(porcentaje(alimento.getEnergiakacl(), nuevaCantidad));
+                detalle.setEnergiaKcal(porcentaje(alimento.getEnergiaKcal(), nuevaCantidad));
                 detalle.setProteinaG(porcentaje(alimento.getProteinaG(), nuevaCantidad));
                 detalle.setGrasaG(porcentaje(alimento.getGrasaG(), nuevaCantidad));
                 detalle.setCarbohidratosG(porcentaje(alimento.getCarbohidratosG(), nuevaCantidad));
