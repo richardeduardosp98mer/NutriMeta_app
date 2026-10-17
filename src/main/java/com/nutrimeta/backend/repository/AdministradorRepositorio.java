@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface AdministradorRepositorio extends JpaRepository<Administrador, Long> {
 
-    Optional<Administrador> findByIdCorreo(String correo);
+    Optional<Administrador> findByCorreo(String correo);
     long countByActivoTrue();
 }

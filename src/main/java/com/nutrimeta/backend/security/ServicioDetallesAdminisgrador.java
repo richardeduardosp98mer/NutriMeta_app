@@ -19,7 +19,7 @@ public class ServicioDetallesAdminisgrador implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
-        Administrador admin = repositorio.findByIdCorreo(correo)
+        Administrador admin = repositorio.findByCorreo(correo)
                 .orElseThrow(() -> new UsernameNotFoundException("Correo o contraseña incorrectas"));
 
         return User.withUsername(admin.getCorreo())

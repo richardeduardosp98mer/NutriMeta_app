@@ -97,7 +97,7 @@ public class AlimentoController {
     }
 
     private boolean esNegativo(Alimento a) {
-        return esNegativo(a.getEnergiakacl()) || esNegativo(a.getProteinaG())
+        return esNegativo(a.getEnergiaKcal()) || esNegativo(a.getProteinaG())
                 || esNegativo(a.getGrasaG()) || esNegativo(a.getCarbohidratosG())
                 || (a.getFibraG() != null && esNegativo(a.getFibraG()));
     }
