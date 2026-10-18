@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootDetalleAlimento"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nm_fondo"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_20">
+
+        <ImageView
+            android:id="@+id/btnVolverDetalle"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/ali_volver"
+            android:padding="@dimen/dp_12"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/nm_texto"/>
+
+        <TextView
+            android:id="@+id/tvNombreDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/nm_texto"
+            android:textSize="@dimen/sp_24"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvGrupoDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:textColor="@color/nm_acento"
+            android:textSize="@dimen/sp_14"/>
+
+        <!-- Valores nutricionales por 100 g o 100 ml -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            app:cardBackgroundColor="@color/nm_tarjeta"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_20">
+
+                <TextView
+                    android:id="@+id/tvBaseDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/nm_secundario"
+                    android:textSize="@dimen/sp_14"/>
+
+                <TextView
+                    android:id="@+id/tvEnergiaDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:textColor="@color/nm_texto"
+                    android:textSize="@dimen/sp_28"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nm_proteinas"
+                            android:textColor="@color/nm_secundario"
+                            android:textSize="@dimen/sp_12"/>
+
+                        <TextView
+                            android:id="@+id/tvProteinasDetalle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:textColor="@color/nm_proteinas"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nm_carbohidratos"
+                            android:textColor="@color/nm_secundario"
+                            android:textSize="@dimen/sp_12"/>
+
+                        <TextView
+                            android:id="@+id/tvCarbohidratosDetalle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:textColor="@color/nm_carbohidratos"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nm_grasas"
+                            android:textColor="@color/nm_secundario"
+                            android:textSize="@dimen/sp_12"/>
+
+                        <TextView
+                            android:id="@+id/tvGrasasDetalle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:textColor="@color/nm_grasas"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvFibraDetalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:textColor="@color/nm_secundario"
+                    android:textSize="@dimen/sp_14"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Cantidad y aporte -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            app:cardBackgroundColor="@color/nm_tarjeta"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_20">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ali_cantidad_titulo"
+                    android:textColor="@color/nm_secundario"
+                    android:textSize="@dimen/sp_14"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    app:cardBackgroundColor="@color/nm_boton"
+                    app:cardCornerRadius="@dimen/dp_16"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_16"
+                        android:paddingEnd="@dimen/dp_16">
+
+                        <EditText
+                            android:id="@+id/etCantidad"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="@string/ali_cantidad_hint"
+                            android:imeOptions="actionDone"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="7"
+                            android:minHeight="@dimen/dp_56"
+                            android:selectAllOnFocus="true"
+                            android:textColor="@color/nm_texto"
+                            android:textColorHint="@color/nm_secundario"
+                            android:textSize="@dimen/sp_24"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvUnidadCantidad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_8"
+                            android:textColor="@color/nm_secundario"
+                            android:textSize="@dimen/sp_18"/>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvErrorCantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:textColor="@color/nm_acento"
+                    android:textSize="@dimen/sp_13"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/ali_aporte_titulo"
+                    android:textColor="@color/nm_secundario"
+                    android:textSize="@dimen/sp_14"/>
+
+                <TextView
+                    android:id="@+id/tvAporteKcal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:textColor="@color/nm_texto"
+                    android:textSize="@dimen/sp_26"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvAporteMacros"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:textColor="@color/nm_secundario"
+                    android:textSize="@dimen/sp_14"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvFuenteDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:textColor="@color/nm_secundario"
+            android:textSize="@dimen/sp_12"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAgregarAlimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:text="@string/ali_agregar_al_plato"
+            android:textColor="@color/nm_texto"
+            app:backgroundTint="@color/nm_boton"/>
+
+    </LinearLayout>
+</ScrollView>

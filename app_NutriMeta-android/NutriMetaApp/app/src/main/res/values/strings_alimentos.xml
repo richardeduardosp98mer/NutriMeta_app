@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Busqueda de alimentos -->
+    <string name="ali_buscar_titulo">Agregar ingrediente</string>
+    <string name="ali_buscar_hint">Buscar (ej. arroz, pollo, papa)</string>
+    <string name="ali_sin_resultados">No encontramos alimentos con esa búsqueda</string>
+    <string name="ali_error_busqueda">No se pudo cargar el catálogo de alimentos</string>
+    <string name="ali_item_detalle">%1$s · por 100 %2$s</string>
+    <string name="ali_volver">Volver</string>
+
+    <!-- Detalle del alimento -->
+    <string name="ali_por_100">Por 100 %1$s</string>
+    <string name="ali_kcal">%1$.0f kcal</string>
+    <string name="ali_gramos">%1$.1f g</string>
+    <string name="ali_fibra">Fibra: %1$.1f g</string>
+    <string name="ali_fibra_sin_dato">Fibra: sin dato</string>
+    <string name="ali_cantidad_titulo">Cantidad</string>
+    <string name="ali_cantidad_hint">Cantidad</string>
+    <string name="ali_cantidad_invalida">Ingresa una cantidad mayor que 0 y hasta 2000 %1$s</string>
+    <string name="ali_aporte_titulo">Aporte para esa cantidad</string>
+    <string name="ali_aporte_macros">P %1$.1f g · C %2$.1f g · G %3$.1f g</string>
+    <string name="ali_sin_aporte">—</string>
+    <string name="ali_fuente">Fuente: %1$s</string>
+    <string name="ali_fuente_ins">Tablas peruanas de composición de alimentos (INS)</string>
+    <string name="ali_fuente_ins_imputado">INS, con valores estimados</string>
+    <string name="ali_fuente_etiqueta">Etiqueta del producto</string>
+    <string name="ali_fuente_admin">Registrado por el administrador</string>
+    <string name="ali_error_cargar">No se encontró el alimento</string>
+
+    <!-- Armar plato -->
+    <string name="ali_plato_titulo">Armar %1$s</string>
+    <string name="ali_plato_vacio">Aún no agregas ingredientes. Toca “Agregar ingrediente” para empezar.</string>
+    <string name="ali_plato_agregar">+ Agregar ingrediente</string>
+    <string name="ali_plato_guardar">Guardar %1$s</string>
+    <string name="ali_plato_total">Total del plato</string>
+    <string name="ali_ingrediente_detalle">%1$s %2$s · %3$.0f kcal</string>
+    <string name="ali_plato_guardado">%1$s guardado</string>
+    <string name="ali_plato_error_guardar">No se pudo guardar el plato</string>
+    <string name="ali_descartar_titulo">¿Descartar este plato?</string>
+    <string name="ali_descartar_mensaje">Los ingredientes que agregaste no se guardarán.</string>
+    <string name="ali_descartar">Descartar</string>
+    <string name="ali_seguir">Seguir armando</string>
+    <string name="ali_quitar">Quitar ingrediente</string>
+    <string name="ali_agregar_al_plato">Agregar al plato</string>
+    <string name="ali_actualizar_cantidad">Actualizar cantidad</string>
+
+</resources>
