@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,6 +7,17 @@ plugins {
     //para firebase
     id("com.google.gms.google-services")
 }
+
+// URL del backend en desarrollo. Se define en local.properties (no se sube a git):
+//   api.baseUrl=http://192.168.1.50:8080/
+// Si no existe, usa 10.0.2.2, que es la PC vista desde el emulador.
+val propiedadesLocales = Properties().apply {
+    val archivo = rootProject.file("local.properties")
+    if (archivo.exists()) {
+        archivo.inputStream().use { load(it) }
+    }
+}
+val apiBaseUrl = propiedadesLocales.getProperty("api.baseUrl") ?: "http://10.0.2.2:8080/"
 
 android {
     namespace = "com.app.nutrimeta"
@@ -20,6 +33,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
     }
 
 
@@ -55,6 +70,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -75,4 +91,8 @@ dependencies {
 
     //correo
     implementation("com.google.firebase:firebase-auth:23.0.0")
+
+    // Consumo de la API REST (sincronizacion)
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
