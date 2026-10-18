@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="usuario_desactivado">Tu cuenta está desactivada. Contacta al administrador.</string>
+</resources>

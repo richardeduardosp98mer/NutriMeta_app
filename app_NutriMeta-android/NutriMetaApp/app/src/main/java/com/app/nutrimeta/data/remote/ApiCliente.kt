@@ -27,4 +27,8 @@ object ApiCliente {
     val catalogo: CatalogoApi by lazy {
         retrofit.create(CatalogoApi::class.java)
     }
+
+    val usuarios: UsuarioApi by lazy {
+        retrofit.create(UsuarioApi::class.java)
+    }
 }
