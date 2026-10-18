@@ -17,6 +17,7 @@ import com.app.nutrimeta.MainActivity
 import com.app.nutrimeta.R
 import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
+import com.app.nutrimeta.data.remote.SincronizadorCatalogo
 import com.app.nutrimeta.profile.PerfilActivity
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
@@ -95,6 +96,9 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         uidUsuario = usuario.uid
+
+        // Actualiza el catalogo de alimentos en segundo plano (una vez por apertura).
+        SincronizadorCatalogo.sincronizarAlAbrir(applicationContext, uidUsuario)
 
         dibujarSemana()
     }
