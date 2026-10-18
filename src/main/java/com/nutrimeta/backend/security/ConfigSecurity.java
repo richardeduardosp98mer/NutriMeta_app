@@ -2,8 +2,10 @@ package com.nutrimeta.backend.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,12 +21,16 @@ public class ConfigSecurity {
     }
 
     // Servicios REST para la app: sin sesión ni formulario de login.
-    // TODO: exigir y verificar el ID token de Firebase (Authorization: Bearer ...) cuando se agregue el Admin SDK.
+    // Todo lo de /api exige un ID token de Firebase valido (Authorization: Bearer ...), salvo el catalogo,
+    // que es publico. El token se verifica en FirebaseJwtConfig.
     @Bean
     @Order(1)
     public SecurityFilterChain apiFilterChain(HttpSecurity http) throws Exception {
         http.securityMatcher("/api/**")
-                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.GET, "/api/catalogo").permitAll()
+                        .anyRequest().authenticated())
+                .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sesion -> sesion.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
