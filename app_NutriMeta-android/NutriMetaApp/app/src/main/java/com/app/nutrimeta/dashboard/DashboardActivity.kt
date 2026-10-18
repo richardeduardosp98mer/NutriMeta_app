@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -17,6 +18,7 @@ import com.app.nutrimeta.MainActivity
 import com.app.nutrimeta.R
 import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
+import com.app.nutrimeta.data.remote.RegistroUsuarioRemoto
 import com.app.nutrimeta.data.remote.SincronizadorCatalogo
 import com.app.nutrimeta.profile.PerfilActivity
 import com.google.android.material.button.MaterialButton
@@ -100,7 +102,30 @@ class DashboardActivity : AppCompatActivity() {
         // Actualiza el catalogo de alimentos en segundo plano (una vez por apertura).
         SincronizadorCatalogo.sincronizarAlAbrir(applicationContext, uidUsuario)
 
+        // Registra al usuario en el backend y comprueba que su cuenta siga activa
+        // (segundo plano, una vez por apertura de la app).
+        RegistroUsuarioRemoto.registrarAlAbrir(usuario) {
+            cerrarSesionPorCuentaDesactivada()
+        }
+
         dibujarSemana()
+    }
+
+    // El backend marco la cuenta como desactivada: se cierra la sesion de Firebase
+    // y se vuelve a la bienvenida. Los datos locales no se borran.
+    private fun cerrarSesionPorCuentaDesactivada() {
+
+        FirebaseAuth.getInstance().signOut()
+
+        Toast.makeText(
+            applicationContext,
+            R.string.usuario_desactivado,
+            Toast.LENGTH_LONG
+        ).show()
+
+        if (!isFinishing && !isDestroyed) {
+            irABienvenida()
+        }
     }
 
     private fun configurarBarrasSistema() {
@@ -732,4 +757,4 @@ class DashboardActivity : AppCompatActivity() {
             cargarDatos()
         }
     }
-}
+}
