@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootPlato"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nm_fondo"
+    android:orientation="vertical">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_20">
+
+        <ImageView
+            android:id="@+id/btnVolverPlato"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/ali_volver"
+            android:padding="@dimen/dp_12"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/nm_texto"/>
+
+        <TextView
+            android:id="@+id/tvTituloPlato"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/nm_texto"
+            android:textSize="@dimen/sp_22"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Total del plato -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:cardBackgroundColor="@color/nm_tarjeta"
+        app:cardCornerRadius="@dimen/dp_20"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ali_plato_total"
+                android:textColor="@color/nm_secundario"
+                android:textSize="@dimen/sp_13"/>
+
+            <TextView
+                android:id="@+id/tvTotalKcalPlato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:textColor="@color/nm_acento"
+                android:textSize="@dimen/sp_22"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvTotalMacrosPlato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:textColor="@color/nm_texto"
+                android:textSize="@dimen/sp_14"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Mensaje cuando el plato esta vacio -->
+    <TextView
+        android:id="@+id/tvVacioPlato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dp_24"
+        android:text="@string/ali_plato_vacio"
+        android:textColor="@color/nm_secundario"
+        android:textSize="@dimen/sp_14"/>
+
+    <!-- Ingredientes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvIngredientes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_12"/>
+
+    <!-- Acciones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_16">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAgregarIngrediente"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ali_plato_agregar"
+            android:textColor="@color/nm_texto"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGuardarPlato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:textColor="@color/nm_texto"
+            app:backgroundTint="@color/nm_boton"/>
+
+    </LinearLayout>
+</LinearLayout>

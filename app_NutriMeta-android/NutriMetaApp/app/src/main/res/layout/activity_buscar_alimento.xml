@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootBuscarAlimento"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nm_fondo"
+    android:orientation="vertical">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_20">
+
+        <ImageView
+            android:id="@+id/btnVolverBuscar"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/ali_volver"
+            android:padding="@dimen/dp_12"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/nm_texto"/>
+
+        <TextView
+            android:id="@+id/tvTituloBuscar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/ali_buscar_titulo"
+            android:textColor="@color/nm_texto"
+            android:textSize="@dimen/sp_22"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Campo de busqueda -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:cardBackgroundColor="@color/nm_tarjeta"
+        app:cardCornerRadius="@dimen/dp_20"
+        app:cardElevation="0dp">
+
+        <EditText
+            android:id="@+id/etBuscarAlimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/ali_buscar_hint"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:minHeight="@dimen/dp_56"
+            android:paddingStart="@dimen/dp_20"
+            android:paddingEnd="@dimen/dp_20"
+            android:textColor="@color/nm_texto"
+            android:textColorHint="@color/nm_secundario"
+            android:textSize="@dimen/sp_16"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Mensaje cuando no hay resultados o falla la carga -->
+    <TextView
+        android:id="@+id/tvEstadoBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dp_24"
+        android:textColor="@color/nm_secundario"
+        android:textSize="@dimen/sp_14"
+        android:visibility="gone"/>
+
+    <!-- Lista de alimentos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAlimentos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_20"/>
+
+</LinearLayout>

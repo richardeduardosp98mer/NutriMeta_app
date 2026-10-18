@@ -251,7 +251,7 @@
     <string name="nm_snack">Snacks</string>
     <string name="nm_comida_vacia">0 kcal · 0 P | 0 C | 0 G</string>
     <string name="nm_resumen_comida_formato">%1$.0f kcal · %2$.1f P | %3$.1f C | %4$.1f G</string>
-    <string name="nm_agregar">+ Agregar alimento</string>
+    <string name="nm_agregar">+ Agregar plato</string>
     <string name="nm_registro_pendiente">Próximamente podrás registrar alimentos en %1$s</string>
 
     <string name="nm_actividad">Mi actividad física</string>
@@ -294,4 +294,4 @@
     <string name="perfil_guardando_cambios">Guardando cambios...</string>
 
 
-</resources>
+</resources>

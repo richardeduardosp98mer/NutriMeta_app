@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -16,6 +15,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app.nutrimeta.MainActivity
 import com.app.nutrimeta.R
+import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
 import com.app.nutrimeta.profile.PerfilActivity
 import com.google.android.material.button.MaterialButton
@@ -200,28 +200,34 @@ class DashboardActivity : AppCompatActivity() {
 
         prepararTarjeta(
             R.id.comidaDesayuno,
-            R.string.nm_desayuno
+            R.string.nm_desayuno,
+            1
         )
 
         prepararTarjeta(
             R.id.comidaAlmuerzo,
-            R.string.nm_almuerzo
+            R.string.nm_almuerzo,
+            2
         )
 
         prepararTarjeta(
             R.id.comidaCena,
-            R.string.nm_cena
+            R.string.nm_cena,
+            3
         )
 
         prepararTarjeta(
             R.id.comidaSnack,
-            R.string.nm_snack
+            R.string.nm_snack,
+            4
         )
     }
 
+    // idTipoComida: 1 Desayuno, 2 Almuerzo, 3 Cena, 4 Snacks (ids de tipo_comida).
     private fun prepararTarjeta(
         idTarjeta: Int,
-        tituloRes: Int
+        tituloRes: Int,
+        idTipoComida: Int
     ) {
 
         val tarjeta = findViewById<View>(idTarjeta)
@@ -234,15 +240,34 @@ class DashboardActivity : AppCompatActivity() {
             R.id.btnAgregarComida
         ).setOnClickListener {
 
-            Toast.makeText(
-                this,
-                getString(
-                    R.string.nm_registro_pendiente,
-                    getString(tituloRes)
-                ),
-                Toast.LENGTH_SHORT
-            ).show()
+            startActivity(
+                Intent(
+                    this,
+                    PlatoActivity::class.java
+                ).apply {
+                    putExtra(
+                        PlatoActivity.EXTRA_ID_TIPO_COMIDA,
+                        idTipoComida
+                    )
+                    putExtra(
+                        PlatoActivity.EXTRA_NOMBRE_COMIDA,
+                        getString(tituloRes)
+                    )
+                    putExtra(
+                        PlatoActivity.EXTRA_FECHA,
+                        fechaSeleccionadaSql()
+                    )
+                }
+            )
         }
+    }
+
+    // Dia que se esta viendo en el dashboard, como yyyy-MM-dd.
+    private fun fechaSeleccionadaSql(): String {
+        return SimpleDateFormat(
+            "yyyy-MM-dd",
+            Locale.US
+        ).format(fechaSeleccionada.time)
     }
 
     private fun cambiarFecha() {
@@ -703,4 +728,4 @@ class DashboardActivity : AppCompatActivity() {
             cargarDatos()
         }
     }
-}
+}

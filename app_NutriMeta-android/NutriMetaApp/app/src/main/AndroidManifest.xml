@@ -30,6 +30,18 @@
             android:name=".profile.PerfilActivity"
             android:exported="false" />
         <activity
+            android:name=".alimentos.PlatoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".alimentos.BuscarAlimentoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".alimentos.DetalleAlimentoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".dashboard.DashboardActivity"
             android:exported="false" /> <!-- Activities -->
         <activity
@@ -55,4 +67,4 @@
         </activity>
     </application>
 
-</manifest>
+</manifest>
