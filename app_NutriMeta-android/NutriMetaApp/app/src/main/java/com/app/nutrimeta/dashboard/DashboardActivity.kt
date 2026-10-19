@@ -21,6 +21,7 @@ import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
 import com.app.nutrimeta.data.remote.RegistroUsuarioRemoto
 import com.app.nutrimeta.data.remote.SincronizadorCatalogo
+import com.app.nutrimeta.data.remote.SincronizadorRestauracion
 import com.app.nutrimeta.data.remote.SincronizadorSubida
 import com.app.nutrimeta.profile.PerfilActivity
 import com.google.android.material.button.MaterialButton
@@ -787,10 +788,51 @@ class DashboardActivity : AppCompatActivity() {
         super.onResume()
 
         if (::uidUsuario.isInitialized) {
+            restaurarSiHaceFalta()
             cargarDatos()
             refrescarIndicadorSync()
             sincronizar(false)
         }
+    }
+
+    // Si el celular no tiene perfil local (reinstalacion o celular nuevo), recupera del
+    // servidor el perfil y los platos del usuario. Si ya hay datos locales, no hace nada.
+    private fun restaurarSiHaceFalta() {
+
+        val usuario = FirebaseAuth.getInstance().currentUser ?: return
+
+        SincronizadorRestauracion.restaurarSiHaceFalta(
+            applicationContext,
+            usuario,
+            alEmpezar = {
+                if (!isFinishing && !isDestroyed) {
+                    tvEstado.visibility = View.VISIBLE
+                    tvEstado.setText(R.string.restaurar_en_curso)
+                }
+            },
+            alDesactivado = { cerrarSesionPorCuentaDesactivada() },
+            alTerminar = { resultado ->
+
+                if (!isFinishing && !isDestroyed) {
+
+                    when (resultado) {
+
+                        SincronizadorRestauracion.Resultado.RESTAURADO -> {
+                            Toast.makeText(this, R.string.restaurar_listo, Toast.LENGTH_SHORT).show()
+                            cargarDatos()
+                            refrescarIndicadorSync()
+                        }
+
+                        SincronizadorRestauracion.Resultado.FALLO -> {
+                            Toast.makeText(this, R.string.restaurar_fallo, Toast.LENGTH_LONG).show()
+                            cargarDatos()
+                        }
+
+                        else -> Unit
+                    }
+                }
+            }
+        )
     }
 
     // Envia al backend lo pendiente (perfil y comidas). manual = lo pidio el usuario tocando el texto.

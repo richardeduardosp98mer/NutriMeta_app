@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="restaurar_en_curso">Recuperando tus datos…</string>
+    <string name="restaurar_listo">Datos recuperados</string>
+    <string name="restaurar_fallo">No se pudieron recuperar tus datos. Revisa tu conexión.</string>
+</resources>
