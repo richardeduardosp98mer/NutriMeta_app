@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.app.nutrimeta.auth.LoginDialog
 import com.app.nutrimeta.onboarding.ObjetivoActivity
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        configurarBarrasSistema()
 
         val viewPager = findViewById<ViewPager2>(R.id.carrusel)
 
@@ -81,6 +86,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    // La app dibuja detras de las barras del sistema: se deja ese espacio libre arriba y abajo
+    // para que el boton y el enlace "Inicia sesion" no queden tapados por los botones del celular.
+    private fun configurarBarrasSistema() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById<View>(R.id.main)) { vista, insets ->
+
+            val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            vista.setPadding(0, barras.top, 0, barras.bottom)
+
+            insets
+        }
+    }
+
     private fun updateIndicators(selectedPosition: Int) {
         val density = resources.displayMetrics.density
         indicators.forEachIndexed { index, view ->
@@ -111,4 +131,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-}
+}
