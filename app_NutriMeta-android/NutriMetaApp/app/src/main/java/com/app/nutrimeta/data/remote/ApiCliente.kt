@@ -31,4 +31,8 @@ object ApiCliente {
     val usuarios: UsuarioApi by lazy {
         retrofit.create(UsuarioApi::class.java)
     }
+
+    val sync: SyncApi by lazy {
+        retrofit.create(SyncApi::class.java)
+    }
 }

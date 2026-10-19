@@ -34,4 +34,7 @@ public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida,
     Optional<RegistroComida> findConDetallesById(@Param("id") Long id);
 
     boolean existsByTipoComidaIdTipoComida(Integer idTipoComida);
+
+    // Para la sincronizacion: busca un registro por el uuid que genero la app.
+    Optional<RegistroComida> findByUuid(String uuid);
 }

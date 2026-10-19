@@ -33,6 +33,8 @@ object ActualizacionPerfilService {
         val altura: Double,
         val objetivo: String,
         val actividad: String,
+        val pesoObjetivo: Double?,
+        val plazoSemanas: Int?,
         val version: Int
     )
 
@@ -93,6 +95,8 @@ object ActualizacionPerfilService {
                         p.talla_cm,
                         p.objetivo,
                         n.codigo,
+                        p.peso_objetivo_kg,
+                        p.plazo_semanas,
                         p.version
                     FROM perfil p
                     JOIN nivel_actividad n
@@ -114,7 +118,9 @@ object ActualizacionPerfilService {
                         altura = cursor.getDouble(3),
                         objetivo = cursor.getString(4),
                         actividad = cursor.getString(5),
-                        version = cursor.getInt(6)
+                        pesoObjetivo = if (cursor.isNull(6)) null else cursor.getDouble(6),
+                        plazoSemanas = if (cursor.isNull(7)) null else cursor.getInt(7),
+                        version = cursor.getInt(8)
                     )
                 }
 
@@ -210,11 +216,37 @@ object ActualizacionPerfilService {
                 )
 
                 // Recalcular metas nutricionales.
-                val metas = CalculadoraMetas.calcular(
+                // Se conserva el peso objetivo y el plazo solo si siguen siendo
+                // coherentes: mismo objetivo y peso objetivo aun en la direccion
+                // correcta. Si no, se descartan y se usa el ajuste fijo del objetivo
+                // (la pantalla para definir una nueva meta queda para el perfil).
+                val mismoObjetivo = actual.objetivo.let {
+                    when (it) {
+                        "BAJAR" -> ObjetivoNutricional.BAJAR
+                        "SUBIR" -> ObjetivoNutricional.SUBIR
+                        else -> ObjetivoNutricional.MANTENER
+                    }
+                } == objetivo
+
+                val objetivoVigente = mismoObjetivo &&
+                        actual.pesoObjetivo != null &&
+                        actual.plazoSemanas != null &&
+                        when (objetivo) {
+                            ObjetivoNutricional.BAJAR -> actual.pesoObjetivo < nuevoPeso
+                            ObjetivoNutricional.SUBIR -> actual.pesoObjetivo > nuevoPeso
+                            ObjetivoNutricional.MANTENER -> false
+                        }
+
+                val resultado = CalculadoraMetas.calcularConMeta(
                     gastoDiarioKcal = energia.gastoDiarioKcal,
                     pesoKg = nuevoPeso,
-                    objetivo = objetivo
+                    objetivo = objetivo,
+                    sexo = sexo,
+                    pesoObjetivoKg = if (objetivoVigente) actual.pesoObjetivo else null,
+                    plazoSemanas = if (objetivoVigente) actual.plazoSemanas else null
                 )
+
+                val metas = resultado.metas
 
                 // Actualizar la fila existente.
                 val valores = ContentValues().apply {
@@ -245,7 +277,15 @@ object ActualizacionPerfilService {
                         metas.metaCarbohidratosG
                     )
 
-                    put("meta_ajustada", 0)
+                    if (objetivoVigente) {
+                        put("peso_objetivo_kg", actual.pesoObjetivo)
+                        put("plazo_semanas", actual.plazoSemanas)
+                    } else {
+                        putNull("peso_objetivo_kg")
+                        putNull("plazo_semanas")
+                    }
+
+                    put("meta_ajustada", if (resultado.ajustada) 1 else 0)
                     put("pendiente", 1)
                     put("version", actual.version + 1)
                 }
@@ -326,4 +366,4 @@ object ActualizacionPerfilService {
 
         return edad
     }
-}
+}
