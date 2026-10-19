@@ -16,6 +16,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app.nutrimeta.MainActivity
 import com.app.nutrimeta.R
+import com.app.nutrimeta.alimentos.HistorialComidaActivity
 import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
 import com.app.nutrimeta.data.remote.RegistroUsuarioRemoto
@@ -272,6 +273,30 @@ class DashboardActivity : AppCompatActivity() {
         tarjeta.findViewById<TextView>(
             R.id.tvTituloComida
         ).setText(tituloRes)
+
+        // Tocar la tarjeta abre los platos guardados de esa comida (editar o eliminar).
+        tarjeta.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    HistorialComidaActivity::class.java
+                ).apply {
+                    putExtra(
+                        HistorialComidaActivity.EXTRA_ID_TIPO_COMIDA,
+                        idTipoComida
+                    )
+                    putExtra(
+                        HistorialComidaActivity.EXTRA_NOMBRE_COMIDA,
+                        getString(tituloRes)
+                    )
+                    putExtra(
+                        HistorialComidaActivity.EXTRA_FECHA,
+                        fechaSeleccionadaSql()
+                    )
+                }
+            )
+        }
 
         tarjeta.findViewById<MaterialButton>(
             R.id.btnAgregarComida

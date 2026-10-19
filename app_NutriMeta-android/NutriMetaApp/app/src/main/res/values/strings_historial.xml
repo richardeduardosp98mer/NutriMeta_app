@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hist_titulo">%1$s · %2$s</string>
+    <string name="hist_plato_titulo">Plato %1$d · %2$.0f kcal</string>
+    <string name="hist_vacio">Aún no guardaste platos en esta comida.</string>
+    <string name="hist_agregar">Agregar plato</string>
+    <string name="hist_editar">Editar</string>
+    <string name="hist_eliminar">Eliminar</string>
+    <string name="hist_cancelar">Cancelar</string>
+    <string name="hist_eliminar_titulo">¿Eliminar este plato?</string>
+    <string name="hist_eliminar_mensaje">Se quitará de tu registro del día y de tu resumen de calorías.</string>
+    <string name="hist_eliminado">Plato eliminado</string>
+    <string name="hist_error_cargar">No se pudieron cargar los platos.</string>
+    <string name="hist_error_eliminar">No se pudo eliminar el plato.</string>
+    <string name="hist_ver_platos">Ver y editar platos ›</string>
+</resources>
