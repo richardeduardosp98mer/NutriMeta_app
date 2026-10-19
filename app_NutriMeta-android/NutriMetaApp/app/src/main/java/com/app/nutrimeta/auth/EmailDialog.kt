@@ -32,6 +32,8 @@ class EmailDialog : DialogFragment() {
     private var altura: Int = 0
     private var peso: Double = 0.0
     private var actividad: String = ""
+    private var pesoObjetivo: Double? = null
+    private var plazoSemanas: Int? = null
 
     companion object {
 
@@ -45,6 +47,8 @@ class EmailDialog : DialogFragment() {
         private const val EXTRA_ALTURA = "EXTRA_ALTURA"
         private const val EXTRA_PESO = "EXTRA_PESO"
         private const val EXTRA_ACTIVIDAD = "EXTRA_ACTIVIDAD"
+        private const val EXTRA_PESO_OBJETIVO = "EXTRA_PESO_OBJETIVO"
+        private const val EXTRA_PLAZO_SEMANAS = "EXTRA_PLAZO_SEMANAS"
 
         // Registro de una nueva cuenta
         fun newInstance(
@@ -54,7 +58,9 @@ class EmailDialog : DialogFragment() {
             altura: Int,
             peso: Double,
             actividad: String = "",
-            fechaNacimiento: String = ""
+            fechaNacimiento: String = "",
+            pesoObjetivo: Double? = null,
+            plazoSemanas: Int? = null
         ): EmailDialog {
 
             return EmailDialog().apply {
@@ -67,6 +73,10 @@ class EmailDialog : DialogFragment() {
                     putDouble(EXTRA_PESO, peso)
                     putString(EXTRA_ACTIVIDAD, actividad)
                     putString(EXTRA_FECHA_NACIMIENTO, fechaNacimiento)
+                    if (pesoObjetivo != null && plazoSemanas != null) {
+                        putDouble(EXTRA_PESO_OBJETIVO, pesoObjetivo)
+                        putInt(EXTRA_PLAZO_SEMANAS, plazoSemanas)
+                    }
                 }
             }
         }
@@ -99,6 +109,11 @@ class EmailDialog : DialogFragment() {
             altura = args.getInt(EXTRA_ALTURA, 0)
             peso = args.getDouble(EXTRA_PESO, 0.0)
             actividad = args.getString(EXTRA_ACTIVIDAD, "")
+
+            if (args.containsKey(EXTRA_PESO_OBJETIVO) && args.containsKey(EXTRA_PLAZO_SEMANAS)) {
+                pesoObjetivo = args.getDouble(EXTRA_PESO_OBJETIVO)
+                plazoSemanas = args.getInt(EXTRA_PLAZO_SEMANAS)
+            }
         }
     }
 
@@ -288,7 +303,9 @@ class EmailDialog : DialogFragment() {
                             fechaNacimiento = fechaNacimiento,
                             altura = altura,
                             peso = peso,
-                            actividad = actividad
+                            actividad = actividad,
+                            pesoObjetivo = pesoObjetivo,
+                            plazoSemanas = plazoSemanas
                         )
 
                         // Calcular las metas y guardar el perfil.
@@ -359,4 +376,4 @@ class EmailDialog : DialogFragment() {
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
-}
+}

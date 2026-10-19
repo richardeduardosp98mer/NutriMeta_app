@@ -67,6 +67,17 @@
             </LinearLayout>
 
 
+            <TextView
+                android:id="@+id/tvSyncDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:paddingVertical="@dimen/dp_8"
+                android:textColor="@color/nm_secundario"
+                android:textSize="@dimen/sp_14"
+                android:clickable="true"
+                android:focusable="true"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

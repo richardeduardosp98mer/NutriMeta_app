@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="usuario_desactivado">Tu cuenta está desactivada. Contacta al administrador.</string>
+    <string name="sync_enviando">Sincronizando…</string>
+    <string name="sync_pendientes">Cambios sin enviar: %1$d · toca para sincronizar</string>
+    <string name="sync_sin_cambios">Sin cambios por enviar</string>
+    <string name="sync_ahora">Sincronizado hace menos de 1 min</string>
+    <string name="sync_hace_min">Sincronizado hace %1$d min</string>
+    <string name="sync_hace_horas">Sincronizado hace %1$d h</string>
+    <string name="sync_hace_dias">Sincronizado hace %1$d d</string>
+    <string name="sync_todo_al_dia">Todo está sincronizado</string>
+    <string name="sync_enviado">Datos enviados al servidor</string>
+    <string name="sync_fallo">No se pudo sincronizar. Revisa tu conexión.</string>
 </resources>

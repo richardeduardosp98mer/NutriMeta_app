@@ -213,9 +213,17 @@ class SobreUsuarioActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Quien quiere bajar o subir de peso define antes su peso objetivo
+            // y plazo; quien mantiene va directo al registro.
+            val destino = if (objetivo == "MANTENER_PESO") {
+                RegistroActivity::class.java
+            } else {
+                MetaActivity::class.java
+            }
+
             val siguientePantalla = Intent(
                 this,
-                RegistroActivity::class.java
+                destino
             ).apply {
 
                 putExtra(
@@ -436,4 +444,4 @@ class SobreUsuarioActivity : AppCompatActivity() {
         private const val KEY_PESO = "estado_peso"
         private const val KEY_ACTIVIDAD = "estado_actividad"
     }
-}
+}

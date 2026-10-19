@@ -32,6 +32,8 @@ class RegistroActivity : AppCompatActivity() {
     private var altura: Int = 0
     private var peso: Double = 0.0
     private var actividad: String = ""
+    private var pesoObjetivo: Double? = null
+    private var plazoSemanas: Int? = null
 
     // Resultado del selector de cuentas Google
     private val googleSignInLauncher = registerForActivityResult(
@@ -84,6 +86,12 @@ class RegistroActivity : AppCompatActivity() {
         peso = intent.getDoubleExtra("EXTRA_PESO", 0.0)
         actividad = intent.getStringExtra("EXTRA_ACTIVIDAD") ?: ""
 
+        // Solo llegan si el usuario eligio bajar o subir de peso (pantalla "Tu meta").
+        if (intent.hasExtra("EXTRA_PESO_OBJETIVO") && intent.hasExtra("EXTRA_PLAZO_SEMANAS")) {
+            pesoObjetivo = intent.getDoubleExtra("EXTRA_PESO_OBJETIVO", 0.0)
+            plazoSemanas = intent.getIntExtra("EXTRA_PLAZO_SEMANAS", 0)
+        }
+
         val btnGoogle = findViewById<MaterialButton>(R.id.btnGoogle)
         val btnEmail = findViewById<MaterialButton>(R.id.btnEmail)
         val tvTerminos = findViewById<TextView>(R.id.tvTerminos)
@@ -123,7 +131,9 @@ class RegistroActivity : AppCompatActivity() {
                 altura,
                 peso,
                 actividad,
-                fechaNacimiento
+                fechaNacimiento,
+                pesoObjetivo,
+                plazoSemanas
             ).show(
                 supportFragmentManager,
                 EmailDialog.TAG
@@ -187,7 +197,9 @@ class RegistroActivity : AppCompatActivity() {
                     fechaNacimiento = fechaNacimiento,
                     altura = altura,
                     peso = peso,
-                    actividad = actividad
+                    actividad = actividad,
+                    pesoObjetivo = pesoObjetivo,
+                    plazoSemanas = plazoSemanas
                 )
 
                 // El servicio abre SQLite, calcula las
@@ -235,4 +247,4 @@ class RegistroActivity : AppCompatActivity() {
             }
     }
 
-}
+}

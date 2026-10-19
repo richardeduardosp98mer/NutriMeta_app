@@ -128,6 +128,7 @@ CREATE TABLE perfil (
     CONSTRAINT ck_perfil_rangos CHECK (peso_kg BETWEEN 30 AND 300 AND talla_cm BETWEEN 120 AND 230),
     CONSTRAINT ck_perfil_objetivo CHECK (
         (objetivo = 'MANTENER' AND peso_objetivo_kg IS NULL AND plazo_semanas IS NULL)
+        OR (objetivo IN ('BAJAR', 'SUBIR') AND peso_objetivo_kg IS NULL AND plazo_semanas IS NULL)
         OR (objetivo = 'BAJAR' AND peso_objetivo_kg < peso_kg AND plazo_semanas >= 1)
         OR (objetivo = 'SUBIR' AND peso_objetivo_kg > peso_kg AND plazo_semanas >= 1)
     )

@@ -20,6 +20,7 @@ import com.app.nutrimeta.alimentos.PlatoActivity
 import com.app.nutrimeta.data.local.NutriMetaDatabaseHelper
 import com.app.nutrimeta.data.remote.RegistroUsuarioRemoto
 import com.app.nutrimeta.data.remote.SincronizadorCatalogo
+import com.app.nutrimeta.data.remote.SincronizadorSubida
 import com.app.nutrimeta.profile.PerfilActivity
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
@@ -44,6 +45,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var tvCarbohidratos: TextView
     private lateinit var tvActividad: TextView
     private lateinit var tvEstado: TextView
+    private lateinit var tvSync: TextView
 
     private lateinit var progresoCalorias: ProgressBar
     private lateinit var progresoProteinas: ProgressBar
@@ -166,6 +168,7 @@ class DashboardActivity : AppCompatActivity() {
         )
         tvActividad = findViewById(R.id.tvActividadDashboard)
         tvEstado = findViewById(R.id.tvEstadoDashboard)
+        tvSync = findViewById(R.id.tvSyncDashboard)
 
         progresoCalorias = findViewById(
             R.id.progresoCaloriasDashboard
@@ -205,6 +208,11 @@ class DashboardActivity : AppCompatActivity() {
                     )
                 )
             }
+        }
+
+        // Al tocar el texto de sincronizacion se fuerza el envio.
+        tvSync.setOnClickListener {
+            sincronizar(true)
         }
 
         findViewById<View>(
@@ -755,6 +763,104 @@ class DashboardActivity : AppCompatActivity() {
 
         if (::uidUsuario.isInitialized) {
             cargarDatos()
+            refrescarIndicadorSync()
+            sincronizar(false)
         }
     }
-}
+
+    // Envia al backend lo pendiente (perfil y comidas). manual = lo pidio el usuario tocando el texto.
+    private fun sincronizar(manual: Boolean) {
+
+        val usuario = FirebaseAuth.getInstance().currentUser ?: return
+
+        if (manual) {
+            tvSync.setText(R.string.sync_enviando)
+        }
+
+        SincronizadorSubida.sincronizar(
+            applicationContext,
+            usuario,
+            manual,
+            alDesactivado = { cerrarSesionPorCuentaDesactivada() },
+            alTerminar = { resultado ->
+
+                if (!isFinishing && !isDestroyed) {
+
+                    refrescarIndicadorSync()
+
+                    if (manual) {
+                        mostrarResultadoManual(resultado)
+                    }
+                }
+            }
+        )
+    }
+
+    private fun mostrarResultadoManual(resultado: SincronizadorSubida.Resultado) {
+
+        val mensaje = when (resultado) {
+            SincronizadorSubida.Resultado.SIN_PENDIENTES -> R.string.sync_todo_al_dia
+            SincronizadorSubida.Resultado.ENVIADO -> R.string.sync_enviado
+            SincronizadorSubida.Resultado.FALLO -> R.string.sync_fallo
+            else -> return
+        }
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    }
+
+    // Muestra "N cambios sin enviar" o "Sincronizado hace X min".
+    private fun refrescarIndicadorSync() {
+
+        val uid = uidUsuario
+        val appContext = applicationContext
+
+        Thread {
+
+            val pendientes = runCatching {
+                SincronizadorSubida.contarPendientes(appContext, uid)
+            }.getOrDefault(-1)
+
+            val ultima = SincronizadorSubida.ultimaSincronizacion(appContext, uid)
+
+            runOnUiThread {
+
+                if (
+                    isFinishing ||
+                    isDestroyed ||
+                    FirebaseAuth.getInstance().currentUser?.uid != uid
+                ) {
+                    return@runOnUiThread
+                }
+
+                tvSync.text = textoSincronizacion(pendientes, ultima)
+            }
+
+        }.start()
+    }
+
+    private fun textoSincronizacion(pendientes: Int, ultima: Long): String {
+
+        if (pendientes < 0) {
+            return ""
+        }
+
+        if (pendientes > 0) {
+            return getString(R.string.sync_pendientes, pendientes)
+        }
+
+        if (ultima <= 0L) {
+            return getString(R.string.sync_sin_cambios)
+        }
+
+        val minutos = ((System.currentTimeMillis() - ultima) / 60_000L)
+            .coerceAtLeast(0L)
+            .toInt()
+
+        return when {
+            minutos < 1 -> getString(R.string.sync_ahora)
+            minutos < 60 -> getString(R.string.sync_hace_min, minutos)
+            minutos < 24 * 60 -> getString(R.string.sync_hace_horas, minutos / 60)
+            else -> getString(R.string.sync_hace_dias, minutos / (24 * 60))
+        }
+    }
+}

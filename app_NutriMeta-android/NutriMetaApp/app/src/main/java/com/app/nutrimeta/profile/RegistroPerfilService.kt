@@ -20,7 +20,10 @@ data class DatosRegistroPerfil(
     val fechaNacimiento: String,
     val altura: Int,
     val peso: Double,
-    val actividad: String
+    val actividad: String,
+    // Solo cuando el objetivo es bajar o subir de peso.
+    val pesoObjetivo: Double? = null,
+    val plazoSemanas: Int? = null
 )
 
 object RegistroPerfilService {
@@ -158,11 +161,21 @@ object RegistroPerfilService {
                 )
 
                 // Calcular calorías y macronutrientes.
-                val metas = CalculadoraMetas.calcular(
+                // Con peso objetivo y plazo, la meta se ajusta a limites seguros.
+                val conMeta = objetivo != ObjetivoNutricional.MANTENER &&
+                        datos.pesoObjetivo != null &&
+                        datos.plazoSemanas != null
+
+                val resultado = CalculadoraMetas.calcularConMeta(
                     gastoDiarioKcal = energia.gastoDiarioKcal,
                     pesoKg = datos.peso,
-                    objetivo = objetivo
+                    objetivo = objetivo,
+                    sexo = sexo,
+                    pesoObjetivoKg = if (conMeta) datos.pesoObjetivo else null,
+                    plazoSemanas = if (conMeta) datos.plazoSemanas else null
                 )
+
+                val metas = resultado.metas
 
                 // Preparar perfil para SQLite.
                 val valores = ContentValues().apply {
@@ -182,6 +195,13 @@ object RegistroPerfilService {
                         nivel.first
                     )
                     put("objetivo", objetivo.name)
+
+                    if (conMeta) {
+                        put("peso_objetivo_kg", datos.pesoObjetivo)
+                        put("plazo_semanas", datos.plazoSemanas)
+                    }
+
+                    put("meta_ajustada", if (resultado.ajustada) 1 else 0)
 
                     put("meta_kcal", metas.metaKcal)
                     put(
@@ -218,4 +238,4 @@ object RegistroPerfilService {
             }
         }
     }
-}
+}

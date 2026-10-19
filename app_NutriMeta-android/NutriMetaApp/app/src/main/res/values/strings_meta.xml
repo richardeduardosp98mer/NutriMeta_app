@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="meta_titulo">¿Cuál es tu meta?</string>
+    <string name="meta_subtitulo">Dinos a qué peso quieres llegar y en cuántas semanas. Ajustaremos tu meta diaria para que sea segura.</string>
+    <string name="meta_label_peso_objetivo">Peso objetivo (kg)</string>
+    <string name="meta_label_plazo">Plazo (semanas)</string>
+    <string name="meta_hint_peso">Ej. 65</string>
+    <string name="meta_hint_plazo">Ej. 12</string>
+    <string name="meta_error_peso_rango">El peso objetivo debe estar entre 30 y 300 kg.</string>
+    <string name="meta_error_peso_bajar">Para bajar de peso, tu peso objetivo debe ser menor que tu peso actual (%1$s kg).</string>
+    <string name="meta_error_peso_subir">Para subir de peso, tu peso objetivo debe ser mayor que tu peso actual (%1$s kg).</string>
+    <string name="meta_error_plazo">El plazo debe estar entre 1 y 104 semanas.</string>
+    <string name="meta_resumen_ok">Ritmo: %1$.2f kg por semana.\nTu meta diaria será de %2$d kcal.</string>
+    <string name="meta_resumen_ajustada">Ese ritmo (%1$.2f kg por semana) no es seguro. Ajustamos tu meta a %2$d kcal diarias; con ella llegarías en unas %3$d semanas.</string>
+</resources>

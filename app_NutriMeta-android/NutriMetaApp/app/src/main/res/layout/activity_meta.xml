@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colors">
+
+    <ImageView
+        android:id="@+id/btnVolverMeta"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/desc_boton_volver"
+        android:focusable="true"
+        android:padding="@dimen/dp_12"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blanco" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnContinuarMeta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnVolverMeta">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_24"
+            android:paddingBottom="@dimen/dp_24">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/meta_titulo"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/meta_subtitulo"
+                android:textColor="@color/color_subtitulo_objetivo"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_32"
+                android:labelFor="@+id/etPesoObjetivoMeta"
+                android:text="@string/meta_label_peso_objetivo"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPesoObjetivoMeta"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_56"
+                android:layout_marginTop="@dimen/dp_8"
+                android:autofillHints="@null"
+                android:background="@drawable/fondo_campo_meta"
+                android:hint="@string/meta_hint_peso"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/meta_hint"
+                android:textSize="@dimen/sp_17" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:labelFor="@+id/etPlazoMeta"
+                android:text="@string/meta_label_plazo"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPlazoMeta"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_56"
+                android:layout_marginTop="@dimen/dp_8"
+                android:autofillHints="@null"
+                android:background="@drawable/fondo_campo_meta"
+                android:hint="@string/meta_hint_plazo"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="3"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:textColor="@color/blanco"
+                android:textColorHint="@color/meta_hint"
+                android:textSize="@dimen/sp_17" />
+
+            <TextView
+                android:id="@+id/tvResumenMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:textColor="@color/blanco"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnContinuarMeta"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:enabled="false"
+        android:text="@string/btn_continuar"
+        android:textAllCaps="false"
+        android:textColor="@color/colors"
+        android:textSize="@dimen/sp_17"
+        android:textStyle="bold"
+        app:backgroundTint="@color/color_boton"
+        app:cornerRadius="@dimen/dp_28"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,6 +49,9 @@
             android:name=".auth.RegistroActivity"
             android:exported="false" />
         <activity
+            android:name=".onboarding.MetaActivity"
+            android:exported="false" />
+        <activity
             android:name=".onboarding.SobreUsuarioActivity"
             android:exported="false" />
         <activity
