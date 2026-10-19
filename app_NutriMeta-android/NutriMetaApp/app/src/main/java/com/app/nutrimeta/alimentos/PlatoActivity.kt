@@ -31,6 +31,9 @@ class PlatoActivity : AppCompatActivity() {
         const val EXTRA_NOMBRE_COMIDA = "nombre_comida"
         const val EXTRA_FECHA = "fecha"
 
+        // Si viene un id (>= 0) se edita ese plato guardado; sin el, se crea uno nuevo.
+        const val EXTRA_ID_REGISTRO = "id_registro"
+
         private const val ESTADO_INGREDIENTES = "ingredientes"
     }
 
@@ -38,6 +41,7 @@ class PlatoActivity : AppCompatActivity() {
     private var idTipoComida = 0
     private var nombreComida = ""
     private var fecha = ""
+    private var idRegistro = -1L
 
     private var ingredientes = ArrayList<IngredientePlato>()
     private var guardando = false
@@ -73,6 +77,7 @@ class PlatoActivity : AppCompatActivity() {
         idTipoComida = intent.getIntExtra(EXTRA_ID_TIPO_COMIDA, 0)
         nombreComida = intent.getStringExtra(EXTRA_NOMBRE_COMIDA).orEmpty()
         fecha = intent.getStringExtra(EXTRA_FECHA).orEmpty()
+        idRegistro = intent.getLongExtra(EXTRA_ID_REGISTRO, -1L)
 
         if (usuario == null || idTipoComida == 0 || fecha.isEmpty()) {
             finish()
@@ -91,6 +96,41 @@ class PlatoActivity : AppCompatActivity() {
         vincularVistas()
         configurarAtras()
         mostrar()
+
+        // Edicion de un plato guardado: se cargan sus ingredientes (solo la primera vez).
+        if (idRegistro >= 0L && savedInstanceState == null) {
+            cargarParaEditar()
+        }
+    }
+
+    private fun cargarParaEditar() {
+
+        Thread {
+
+            val resultado = runCatching {
+                RegistroComidaRepositorio(applicationContext)
+                    .cargarIngredientes(uidUsuario, idRegistro)
+            }
+
+            runOnUiThread {
+
+                if (isFinishing || isDestroyed) {
+                    return@runOnUiThread
+                }
+
+                val cargados = resultado.getOrNull()
+
+                if (cargados == null || cargados.isEmpty()) {
+                    Toast.makeText(this, R.string.ali_error_cargar, Toast.LENGTH_SHORT).show()
+                    finish()
+                    return@runOnUiThread
+                }
+
+                ingredientes = ArrayList(cargados)
+                mostrar()
+            }
+
+        }.start()
     }
 
     private fun configurarBarrasSistema() {
@@ -291,8 +331,13 @@ class PlatoActivity : AppCompatActivity() {
         Thread {
 
             val resultado = runCatching {
-                RegistroComidaRepositorio(applicationContext)
-                    .guardarPlato(uidUsuario, idTipoComida, fecha, copia)
+                val repositorio = RegistroComidaRepositorio(applicationContext)
+
+                if (idRegistro >= 0L) {
+                    repositorio.actualizarPlato(uidUsuario, idRegistro, copia)
+                } else {
+                    repositorio.guardarPlato(uidUsuario, idTipoComida, fecha, copia)
+                }
             }
 
             runOnUiThread {
