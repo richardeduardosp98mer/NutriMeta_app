@@ -42,7 +42,7 @@ object SincronizadorCatalogo {
 
     // Pide solo lo nuevo (desde la ultima sincronizacion) y lo aplica.
     // Devuelve cuantos alimentos recibio.
-    private fun sincronizar(context: Context, firebaseUid: String): Int {
+    internal fun sincronizar(context: Context, firebaseUid: String): Int {
 
         val repositorio = AlimentoRepositorio(context)
 

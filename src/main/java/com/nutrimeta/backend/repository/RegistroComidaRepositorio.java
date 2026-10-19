@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida, Long> {
@@ -32,6 +33,16 @@ public interface RegistroComidaRepositorio extends JpaRepository<RegistroComida,
     @EntityGraph(attributePaths = {"usuario", "tipoComida", "detalles", "detalles.alimento"})
     @Query("SELECT r FROM RegistroComida r WHERE r.idRegistro = :id")
     Optional<RegistroComida> findConDetallesById(@Param("id") Long id);
+
+    // Para restaurar el celular: registros vigentes del usuario con todo lo que se envia
+    // (tipo de comida, ingredientes y alimento), del mas reciente al mas antiguo.
+    @EntityGraph(attributePaths = {"tipoComida", "detalles", "detalles.alimento"})
+    @Query("""
+        SELECT r FROM RegistroComida r
+            WHERE r.usuario.idUsuario = :idUsuario AND r.eliminado = false
+            ORDER BY r.fecha DESC, r.idRegistro DESC
+    """)
+    List<RegistroComida> findVigentesConDetalles(@Param("idUsuario") Long idUsuario);
 
     boolean existsByTipoComidaIdTipoComida(Integer idTipoComida);
 
